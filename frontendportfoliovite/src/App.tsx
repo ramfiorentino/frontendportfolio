@@ -94,7 +94,7 @@ function App() {
                   Full project showcase
                 </Link>
                 </button>
-                <button className="btn rounded-full w-fit my-2">Live Site</button>
+                <button className="btn rounded-full w-fit my-2" onClick={() => window.open(project.livesite, '_blank')}>Live Site</button>
                 </div>
 
                 
