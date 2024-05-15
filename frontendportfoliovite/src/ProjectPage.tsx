@@ -7,9 +7,8 @@ import ramStar from "./assets/ramStar.svg"
 function ProjectPage(props: { projects: Project[] }) {
   
   const { projects } = props;
-  const { projectId} = useParams();
-
-  const selectedProject = projects.find(project => project.id === parseInt(projectId));
+  const { projectId } = useParams<{ projectId: string }>(); // Ensure projectId is always a string
+  const selectedProject = projects.find(project => project.id === parseInt(projectId || "", 10)); // Use default value if projectId is undefined
 
   if (!selectedProject) {
     return <div>Project not found!</div>;
