@@ -1,7 +1,6 @@
 import {
   BrowserRouter as Router,
   Link,
-  Route,
   useNavigate,
 } from "react-router-dom";
 import { projectsData } from "./projectsData"; // Import projects data

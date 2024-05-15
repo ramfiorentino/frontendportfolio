@@ -5,8 +5,9 @@ import Footer from "./Footer";
 import ramStar from "./assets/ramStar.svg"
 
 function ProjectPage(props: { projects: Project[] }) {
+  
   const { projects } = props;
-  const { projectId } = useParams();
+  const { projectId} = useParams();
 
   const selectedProject = projects.find(project => project.id === parseInt(projectId));
 

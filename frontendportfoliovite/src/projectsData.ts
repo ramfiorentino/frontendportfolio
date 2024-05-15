@@ -146,7 +146,7 @@ interface Technology {
   icon: string;
 }
 
-export interface KeyFeature {
+export interface KeyFeatures {
   imageUrl: string;
   description: string;
 }
