@@ -151,7 +151,35 @@ p {
     white-space: nowrap;
 
   }
-
   .border-1 {
     border-width: 1px;
   }
+
+
+.justify-self-end {
+  margin-left: auto;
+}
+
+.h-85vh {
+  min-height: 85vh;
+  height: 85vh;
+}
+
+#section-howIWork {
+  background-color: #89dffe;
+  min-height: 118px;
+}
+
+#section-education {
+  background-color: #F5C032;
+  min-height: 118px;
+}
+
+#section-comingUp {
+  background-color: white;
+  min-height: 118px;
+}
+
+#projectList-item {
+  min-height: 118px;
+}

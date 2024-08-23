@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client'
 import { projectsData } from './projectsData'; // Import projects data
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProjectPage from './ProjectPage'
-import Bio from './Bio'
+import Bio from './Bio.tsx'
+import Contact from './Contact.tsx'
 import App from './App.tsx'
-import './index.css'
+import './Styles/index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -13,7 +14,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
       <Route path="/" element={<App />} /> {/* Home page */}
         <Route path="/project/:projectId" element={<ProjectPage projects={projectsData} />}  /> 
-        <Route path="/bio" element={<Bio />} /> {/* Bio/contact page */}
+        <Route path="/bio" element={<Bio />} /> {/* Bio page */}
+        <Route path="/contact" element={<Contact />} /> {/* Bio page */}
         <Route path="*" element={<App />} /> {/* Catch-all route for unmatched paths */}
       </Routes>
     </Router>

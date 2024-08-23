@@ -1,16 +1,24 @@
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import bioPic from "./assets/ram-headshot-edit.jpeg";
+import brandasset from "./assets/brand-asset.png";
 
 function Bio() {
   return (
     <div>
       <Navbar />
-
-      <h2 className="mx-2 my-8 md:mx-20 md:mt-20 md:text-8xl md:mb-6">
-        Hello! ☺ I’m Ram Fiorentino, a collaborative Frontend Dev & Visual
-        Designer
-      </h2>
+      <div className="flex place-content-end mx-2 my-8 md:mx-20 md:mt-20 md:text-8xl md:mb-6">
+        <h2 className="z-10">
+          Hello! ☺ I’m Ram Fiorentino, a collaborative Frontend Dev & Visual
+          Designer
+        </h2>
+        <img
+          src={brandasset}
+          alt=""
+          className="w-60 h-40 scale-125 -rotate-12 mt-20 absolute right-8 opacity-60 md:scale-150 md:pr-6 md:justify-self-end"
+        />
+      </div>
 
       <div className="md:flex md:flex-col">
         <div className="flex mx-2 my-5 justify-between md:mx-20">
@@ -31,6 +39,7 @@ function Bio() {
               Let’s talk! I'm a very curious Frontend Dev who's passionate about
               innovation, data visualisation.
             </p>
+            <img src={bioPic} alt="" />
             <p className="md:hidden mt-2 leading-5">
               Available from May 2023, always lookung to collaborate with
               creative teams. Let’s talk!
@@ -39,10 +48,7 @@ function Bio() {
 
           <div className="hidden md:flex md:flex-col md:my-8 md:mx-2 md:mt-36">
             <div className="flex flex-col h-fit w-56 p-3 m-0  items-center text-center mb-32">
-              <div className="btn rounded-full">
-                {" "}
-                Focus{" "}
-              </div>
+              <div className="btn rounded-full"> Focus </div>
               <p className="uppercase leading-4 text-xs mt-5 mb-2">
                 front end <br /> SVG <br /> web animations <br /> data vis{" "}
                 <br /> ecommerce <br /> ux/ui <br /> website design
@@ -50,10 +56,7 @@ function Bio() {
             </div>
 
             <div className="flex flex-col h-fit w-56 p-3 m-0  items-center text-center">
-              <div className="btn rounded-full">
-                {" "}
-                Plus{" "}
-              </div>
+              <div className="btn rounded-full"> Plus </div>
               <p className="uppercase leading-4 text-xs mt-5 mb-2">
                 front end <br /> SVG <br /> web animations <br /> data vis{" "}
                 <br /> ecommerce <br /> ux/ui <br /> website design
@@ -160,8 +163,8 @@ function Bio() {
             You are always welcome to contact me by email at{" "}
             <i>ramfiorentino@proton.me</i>
           </div>
-          <div>
-            <svg
+          <div className="md:mt-4">
+            <svg id="mailIcon"
               xmlns="http://www.w3.org/2000/svg"
               width="100%"
               height="100%"
