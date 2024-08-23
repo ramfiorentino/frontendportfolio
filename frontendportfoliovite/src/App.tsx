@@ -38,7 +38,6 @@ function App() {
           </div>
         </div>
       </div>
-
       <div className="containeranimationportfolio z-10">
         <div className="horizontalscrollingitems">
           <div className="horizontalscrollingitems__item text-white bg-red-500">
@@ -144,13 +143,13 @@ function App() {
           <input type="checkbox" />
           <div
             id="item-title"
-            className="collapse-title flex py-4 items-center justify-between px-4 md:justify-between"
+            className="collapse-title flex py-4 items-center justify-between px-4"
           >
-            <div className="flex w-28">
-              <h3 className="self-center text-xl font-semibold">HOW I WORK!</h3>
-              <div className="text-xs self-center uppercase hidden md:flex ml-4 w-24">
+            <div className="flex justify-start">
+              <h3 className="self-center text-xl font-semibold w-28 md:w-48">HOW I WORK!</h3>
+              <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
                 I explain and showcase my project work in progress: photos,
-                project management archive, fun facts and more!
+                project management archive, fun facts and more! HEHE
               </div>
             </div>
             <div className="flex items-center md:hidden md:justify-end">
@@ -193,9 +192,10 @@ function App() {
             id="item-title"
             className="collapse-title flex py-4 items-center justify-between px-4 md:justify-between"
           >
-            <div className="flex w-28">
-              <h3 className="self-center text-xl font-semibold">EDU-<br />CATION</h3>
-              <div className="text-xs self-center uppercase hidden md:flex ml-4">
+
+            <div className="flex">
+              <h3 className="self-center text-xl font-semibold w-28 md:w-48">EDU-<br />CATION</h3>
+              <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
                 Learning is what i love the most. Check out my last completed
                 education and courses!
               </div>
@@ -240,9 +240,10 @@ function App() {
             id="item-title"
             className="collapse-title flex py-4 items-center justify-between px-4 md:justify-between"
           >
-            <div className="flex w-28">
-              <h3 className="self-center text-xl font-semibold">COMING UP!</h3>
-              <div className="text-xs self-center uppercase hidden md:flex ml-4">
+
+            <div className="flex">
+              <h3 className="self-center text-xl font-semibold w-28 md:w-48">COMING UP!</h3>
+              <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
                 Want to see whats down the line? Projects, research, meetups and
                 more!
               </div>

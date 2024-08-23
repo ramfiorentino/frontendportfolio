@@ -20,7 +20,6 @@ function Bio() {
           className="w-60 h-40 scale-125 mt-20 absolute right-8 opacity-60 md:scale-150 md:pr-6 md:justify-self-end"
         />
       </div>
-
       <div className="md:flex md:flex-col">
         <div className="flex mx-2 my-5 justify-between md:mx-20">
           <section className="w-3/4">
@@ -122,7 +121,7 @@ function Bio() {
           </div>
         </div>
       </div>
-
+      
       <div className="flex my-8 mx-2 justify-center md:hidden">
         <div className="flex flex-col h-fit w-56 p-3 m-0 border-dashed border-2 border-red-500 items-center text-center roundedcard">
           <div className="border-1 border-red-500 rounded-full w-1/2">
