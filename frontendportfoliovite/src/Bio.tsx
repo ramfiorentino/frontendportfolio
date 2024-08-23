@@ -14,9 +14,10 @@ function Bio() {
           Designer
         </h2>
         <img
+          id="brandasset"
           src={brandasset}
           alt=""
-          className="w-60 h-40 scale-125 -rotate-12 mt-20 absolute right-8 opacity-60 md:scale-150 md:pr-6 md:justify-self-end"
+          className="w-60 h-40 scale-125 mt-20 absolute right-8 opacity-60 md:scale-150 md:pr-6 md:justify-self-end"
         />
       </div>
 
@@ -34,12 +35,15 @@ function Bio() {
               innovation, data visualisation, immersive UXs, 3D, music
               computing, virtual reality and design. Bio Heading!
             </h4>
-            <p id="bioParragraph-desk" className="hidden mt-4 leading-5 md:flex md:mb-32 md:text-sm">
+            <p
+              id="bioParragraph-desk"
+              className="hidden mt-4 leading-5 md:flex md:mb-32 md:text-sm"
+            >
               Available from May 2023, always collaborating with creative teams.
               Let’s talk! I'm a very curious Frontend Dev who's passionate about
               innovation, data visualisation. This is great!
             </p>
-            <img src={bioPic} alt="" />
+            <img src={bioPic} alt="" className="my-4 rounded-lg" />
             <p id="bioParragraph-mobile" className="md:hidden mt-2 leading-5">
               Available from May 2023, always looking to have fun with lovely
               creative teams.
@@ -164,7 +168,8 @@ function Bio() {
             <i>ramfiorentino@proton.me</i>
           </div>
           <div className="md:mt-4">
-            <svg id="mailIcon"
+            <svg
+              id="mailIcon"
               xmlns="http://www.w3.org/2000/svg"
               width="100%"
               height="100%"

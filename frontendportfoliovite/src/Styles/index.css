@@ -118,6 +118,10 @@ p {
   margin-left: -0.8rem;
 }
 
+a, summary {
+  font-size: 1rem;
+}
+
 .roundedcard {
   border-radius: 40px;
   border-width: 1px;
@@ -183,3 +187,20 @@ p {
 #projectList-item {
   min-height: 118px;
 }
+
+#brandasset {
+  animation: Swing 7s ease-in-out infinite;
+}
+
+@keyframes Swing {
+  0% {
+    rotate: 7deg;
+  }
+  50% {
+    rotate: -7deg;
+  }
+  100% {
+    rotate: 7deg;
+  }
+}
+

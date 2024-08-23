@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { projectsData } from "./projectsData"; // Import projects data
+import { projectsData } from "./projectsData";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import qrcode from "./assets/qrcode-mockup.png";
@@ -22,7 +22,7 @@ function App() {
           </div>
         </div>
         <img
-          id="brand-graphic"
+          id="brandasset"
           src={brandasset}
           alt=""
           className="w-60 h-40 scale-125 mt-20 absolute right-8 opacity-60 md:pr-6 md:justify-self-end lg::opacity-90"
@@ -146,9 +146,9 @@ function App() {
             id="item-title"
             className="collapse-title flex py-4 items-center justify-between px-4 md:justify-between"
           >
-            <div className="flex">
-              <h3 className="self-center">HOW I WORK!</h3>
-              <div className="text-xs self-center uppercase hidden md:flex ml-4">
+            <div className="flex w-28">
+              <h3 className="self-center text-xl font-semibold">HOW I WORK!</h3>
+              <div className="text-xs self-center uppercase hidden md:flex ml-4 w-24">
                 I explain and showcase my project work in progress: photos,
                 project management archive, fun facts and more!
               </div>
@@ -193,8 +193,8 @@ function App() {
             id="item-title"
             className="collapse-title flex py-4 items-center justify-between px-4 md:justify-between"
           >
-            <div className="flex">
-              <h3 className="self-center">EDUCATION</h3>
+            <div className="flex w-28">
+              <h3 className="self-center text-xl font-semibold">EDU-<br />CATION</h3>
               <div className="text-xs self-center uppercase hidden md:flex ml-4">
                 Learning is what i love the most. Check out my last completed
                 education and courses!
@@ -240,8 +240,8 @@ function App() {
             id="item-title"
             className="collapse-title flex py-4 items-center justify-between px-4 md:justify-between"
           >
-            <div className="flex">
-              <h3 className="self-center">COMING UP!</h3>
+            <div className="flex w-28">
+              <h3 className="self-center text-xl font-semibold">COMING UP!</h3>
               <div className="text-xs self-center uppercase hidden md:flex ml-4">
                 Want to see whats down the line? Projects, research, meetups and
                 more!
