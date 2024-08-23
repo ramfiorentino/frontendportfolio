@@ -2,16 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
 function Navbar() {
-  const menuRef = useRef(null);
-  const toggleRef = useRef(null);
+  // Explicitly define the types for the refs
+  const menuRef = useRef<HTMLUListElement>(null);
+  const toggleRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleClickOutside = (event) => {
+  // Define the correct event type and ensure the event target is a Node
+  const handleClickOutside = (event: MouseEvent) => {
     if (
       menuRef.current &&
       toggleRef.current &&
-      !menuRef.current.contains(event.target) &&
-      !toggleRef.current.contains(event.target)
+      !menuRef.current.contains(event.target as Node) &&
+      !toggleRef.current.contains(event.target as Node)
     ) {
       setIsMenuOpen(false);
     }
@@ -34,7 +36,7 @@ function Navbar() {
         </div>
 
         <div className="navbar-end hidden lg:flex z-20">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1" ref={menuRef}>
             <li>
               <Link to="/bio">Bio</Link>
             </li>
@@ -53,7 +55,7 @@ function Navbar() {
                     </a>
                   </li>
                   <li>
-                  <Link to="/contact">Contact</Link>
+                    <Link to="/contact">Contact</Link>
                   </li>
                   <li>
                     <a
@@ -80,8 +82,9 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        
-        <div id="mobile-menu-toggle"
+
+        <div
+          id="mobile-menu-toggle"
           className="dropdown dropdown-end z-20"
           ref={toggleRef}
         >
@@ -127,7 +130,7 @@ function Navbar() {
                 </a>
               </li>
               <li>
-              <Link to="/contact">Contact</Link>
+                <Link to="/contact">Contact</Link>
               </li>
               <li>
                 <a

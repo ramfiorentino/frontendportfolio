@@ -22,29 +22,29 @@ function Bio() {
 
       <div className="md:flex md:flex-col">
         <div className="flex mx-2 my-5 justify-between md:mx-20">
-          <div className="w-3/4">
+          <section className="w-3/4">
             <p className="mt-2 leading-5 hidden md:flex md:mb-32 md:text-sm">
               Available from May 2023, always collaborating with creative teams.
               Let’s talk!
             </p>
             <button className="btn rounded-full mr-2"> About </button>
             <button className="btn rounded-full"> Me </button>
-            <h4 className="mt-7 leading-7 md:mt-9 md:text-5xl">
+            <h4 id="bioHeading" className="mt-7 leading-7 md:mt-9 md:text-5xl">
               Hi! I'm a very curious Frontend Dev who's passionate about
               innovation, data visualisation, immersive UXs, 3D, music
-              computing, virtual reality and design.
+              computing, virtual reality and design. Bio Heading!
             </h4>
-            <p className="hidden mt-4 leading-5 md:flex md:mb-32 md:text-sm">
+            <p id="bioParragraph-desk" className="hidden mt-4 leading-5 md:flex md:mb-32 md:text-sm">
               Available from May 2023, always collaborating with creative teams.
               Let’s talk! I'm a very curious Frontend Dev who's passionate about
-              innovation, data visualisation.
+              innovation, data visualisation. This is great!
             </p>
             <img src={bioPic} alt="" />
-            <p className="md:hidden mt-2 leading-5">
-              Available from May 2023, always lookung to collaborate with
-              creative teams. Let’s talk!
+            <p id="bioParragraph-mobile" className="md:hidden mt-2 leading-5">
+              Available from May 2023, always looking to have fun with lovely
+              creative teams.
             </p>
-          </div>
+          </section>
 
           <div className="hidden md:flex md:flex-col md:my-8 md:mx-2 md:mt-36">
             <div className="flex flex-col h-fit w-56 p-3 m-0  items-center text-center mb-32">
