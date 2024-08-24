@@ -66,7 +66,7 @@ function App() {
           <li key={project.id}>
             <div
               id="projectList-item"
-              className="collapse bg-base-200 md:px-2 md:py-6 px-4"
+              className="collapse bg-base-200 md:px-2 md:py-6 w-screen"
             >
               <input type="checkbox" />
 
@@ -76,7 +76,7 @@ function App() {
                 className="collapse-title flex py-4 items-center justify-between px-4 md:justify-between"
               >
                 <div className="flex">
-                  <h3 className="w-28 self-center md:w-48">{project.title}</h3>
+                  <h3 className="w-28 self-center md:w-48 text-2xl">{project.title}</h3>
                   <div className="w-24 text-xs self-center hidden md:flex md:ml-2 md:w-32">
                     {" "}
                     {project.dateAndLocation}{" "}
@@ -139,7 +139,7 @@ function App() {
         ))}
 
         {/* SPECIAL SECTIONS */}
-        <div id="section-howIWork" className="collapse md:px-2 md:py-6 px-4">
+        <div id="section-howIWork" className="collapse bg-base-200 md:px-2 md:py-6 w-screen">
           <input type="checkbox" />
           <div
             id="item-title"
@@ -186,7 +186,7 @@ function App() {
           </div>
         </div>
 
-        <div id="section-education" className="collapse md:px-2 md:py-6 px-4">
+        <div id="section-education" className="collapse bg-base-200 md:px-2 md:py-6 w-screen">
           <input type="checkbox" />
           <div
             id="item-title"
@@ -234,7 +234,7 @@ function App() {
           </div>
         </div>
 
-        <div id="section-comingUp" className="collapse md:px-2 md:py-6 px-4">
+        <div id="section-comingUp" className="collapse bg-base-200 md:px-2 md:py-6 w-screen">
           <input type="checkbox" />
           <div
             id="item-title"
