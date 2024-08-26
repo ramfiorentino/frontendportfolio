@@ -28,7 +28,7 @@ function Navbar() {
 
   return (
     <div>
-      <div className="navbar bg-base-100 justify-between md:h-24 px-6">
+      <div className="navbar bg-base-100 justify-between md:h-24 px-4">
         <div className="navbar-start">
           <Link className="link link-hover" to="/">
             <h3>RAM FIORENTINO</h3>
@@ -114,7 +114,7 @@ function Navbar() {
               id="menu"
               ref={menuRef}
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52"
+              className="menu menu-sm dropdown-content z-[1] menu-custom p-fit shadow rounded-box"
             >
               <li>
                 <Link to="/bio">BIO</Link>

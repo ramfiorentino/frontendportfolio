@@ -1,12 +1,62 @@
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { projectsData } from "./projectsData";
+import client from "./sanityClient";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import qrcode from "./assets/qrcode-mockup.png";
 import brandasset from "./assets/brand-asset.png";
 
+interface Technology {
+  title: string;
+  icon: string;
+  _id: string;
+}
+
+interface KeyFeature {
+  description: string;
+}
+
+interface Project {
+  _id: string;
+  title: string;
+  slug: string;
+  dateAndLocation: string;
+  shortDescription: string;
+  livesite: string;
+  techStack: Technology[];
+  keyFeatures: KeyFeature[];
+}
+
 function App() {
-  const navigate = useNavigate(); // Get navigate function
+  const [projectsData, setProjectsData] = useState<Project[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const query = `*[_type == "project"] {
+        _id,
+        title,
+        slug,
+        dateAndLocation,
+        shortDescription,
+        livesite,
+        "techStack": techStack[]->{
+          title,
+          _id,
+          icon
+        },
+        "keyFeatures": keyFeatures[]->{
+          _id,
+          description
+        }
+      }`;
+
+      const result = await client.fetch(query);
+      setProjectsData(result);
+    };
+
+    fetchProjects();
+  }, []);
 
   return (
     <div>
@@ -60,32 +110,36 @@ function App() {
         </div>
       </div>
 
-      <ul>
+
+      {/* PROJECTS LIST ⭐️⭐️⭐️⭐️⭐️⭐️⭐️ */}
+      <ul key={""}>
         {/* Iterate through projectsData and display titles */}
         {projectsData.map((project) => (
-          <li key={project.id}>
+          <li key={project._id}>
             <div
               id="projectList-item"
-              className="collapse bg-base-200 md:px-2 md:py-6 w-screen"
+              className="collapse bg-base-200 md:px-2  w-full"
             >
-              <input type="checkbox" />
+              <input type="checkbox"/>
 
               {/* Project list item layout */}
               <div
                 id="item-title"
-                className="collapse-title flex py-4 items-center justify-between px-4 md:justify-between"
+                className="collapse-title flex items-center justify-between px-4 md:justify-between"
               >
                 <div className="flex">
-                  <h3 className="w-28 self-center md:w-48 text-2xl">{project.title}</h3>
+                  <h3 className="w-28 self-center text-xl md:w-48 md:text-2xl h-30">{project.title}</h3>{/*📌📌📌*/}
+                  {/*📌📌📌*/}
                   <div className="w-24 text-xs self-center hidden md:flex md:ml-2 md:w-32">
                     {" "}
                     {project.dateAndLocation}{" "}
                   </div>
                 </div>
                 <div className="flex items-center md:hidden md:justify-end">
+                  {/*📌📌📌*/}
                   <div className="w-24 text-xs">
                     {" "}
-                    {project.dateAndLocation}{" "}
+                    {project.dateAndLocation}
                   </div>
                   <div className="btn rounded-full w-fit ml-4">Click ☺</div>
                 </div>
@@ -96,20 +150,23 @@ function App() {
 
               <div className="collapse-content">
                 <div className="md:flex md:justify-between">
+                  {/*📌📌📌*/}
                   <p className="md:w-2/3 md:pt-10">
                     {project.shortDescription}
                   </p>
-
+                  {/*📌📌📌*/}
                   <div className="flex my-4">
-                    {project.techStack.map((tech, index) => (
-                      <div key={index}>
+                    {project.techStack.map((tech) => (
+                      <div key={tech._id}>
                         <div
                           id="singleTechIcon"
                           className="flex flex-col items-center mr-2"
                         >
+                          {/*📌📌📌*/}
                           <div
                             dangerouslySetInnerHTML={{ __html: tech.icon }}
                           />
+                          {/*📌📌📌*/}
                           <span className="text-xs">{tech.title}</span>
                         </div>
                       </div>
@@ -119,13 +176,15 @@ function App() {
 
                 <div className="flex flex-col md:flex-row md:justify-between">
                   <button className="btn rounded-full w-fit my-2">
+                    {/*📌📌📌*/}
                     <Link
-                      to={`/project/${project.id}`}
-                      onClick={() => navigate(`/project/${project.id}`)}
+                      to={`/project/${project._id}`}
+                      onClick={() => navigate(`/project/${project.slug}`)}
                     >
                       Full project showcase
                     </Link>
                   </button>
+                  {/*📌📌📌*/}
                   <button
                     className="btn rounded-full w-fit my-2"
                     onClick={() => window.open(project.livesite, "_blank")}
@@ -138,15 +197,15 @@ function App() {
           </li>
         ))}
 
-        {/* SPECIAL SECTIONS */}
-        <div id="section-howIWork" className="collapse bg-base-200 md:px-2 md:py-6 w-screen">
+        {/* SPECIAL SECTIONS ⭐️⭐️⭐️⭐️⭐️ */}
+        <div id="section-howIWork" className="collapse bg-base-200 md:px-2 md:p-4 w-full py">
           <input type="checkbox" />
           <div
             id="item-title"
-            className="collapse-title flex py-4 items-center justify-between px-4"
+            className="collapse-title flex items-center justify-between px-4"
           >
             <div className="flex justify-start">
-              <h3 className="self-center text-xl font-semibold w-28 md:w-48">HOW I WORK!</h3>
+              <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">HOW I WORK!</h3>
               <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
                 I explain and showcase my project work in progress: photos,
                 project management archive, fun facts and more! HEHE
@@ -186,15 +245,15 @@ function App() {
           </div>
         </div>
 
-        <div id="section-education" className="collapse bg-base-200 md:px-2 md:py-6 w-screen">
+        <div id="section-education" className="collapse bg-base-200 md:px-2 md:p-4 w-full">
           <input type="checkbox" />
           <div
             id="item-title"
-            className="collapse-title flex py-4 items-center justify-between px-4 md:justify-between"
+            className="collapse-title flex items-center justify-between px-4 md:justify-between"
           >
 
             <div className="flex">
-              <h3 className="self-center text-xl font-semibold w-28 md:w-48">EDU-<br />CATION</h3>
+              <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">EDU-<br />CATION</h3>
               <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
                 Learning is what i love the most. Check out my last completed
                 education and courses!
@@ -234,15 +293,15 @@ function App() {
           </div>
         </div>
 
-        <div id="section-comingUp" className="collapse bg-base-200 md:px-2 md:py-6 w-screen">
+        <div id="section-comingUp" className="collapse bg-base-200 md:px-2 md:p-4 w-full">
           <input type="checkbox" />
           <div
             id="item-title"
-            className="collapse-title flex py-4 items-center justify-between px-4 md:justify-between"
+            className="collapse-title flex items-center justify-between px-4 md:justify-between"
           >
 
             <div className="flex">
-              <h3 className="self-center text-xl font-semibold w-28 md:w-48">COMING UP!</h3>
+              <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">COMING UP!</h3>
               <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
                 Want to see whats down the line? Projects, research, meetups and
                 more!

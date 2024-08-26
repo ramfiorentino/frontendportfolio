@@ -10,13 +10,10 @@
   color: var(--red);
   --red: #ef4444;
   --blue: #af9cff;
-  min-width: 100vw;
 }
 
 body {
   margin: 0;
-  min-width: 100vw;
-  max-width: 100vw;
   min-height: 100vh;
   background-color: white;
 }
@@ -189,6 +186,10 @@ a, summary {
   min-height: 118px;
 }
 
+.h-30 {
+  max-height: 7.5rem;
+}
+
 #brandasset {
   animation: Swing 7s ease-in-out infinite;
 }
@@ -207,4 +208,20 @@ a, summary {
 
 .md--ml-4-5 {
   margin-right: 4.8rem;
+}
+
+.menu-custom {
+  margin: 3.5rem 0 0 0;
+  padding-top: 1.5rem;
+  background-color: white;
+  border: 1px solid #89dffe;
+  align-items: center;
+  min-width: 300px;
+  max-width: 300px;
+  height: 14rem;
+  gap: 8px;
+}
+
+.menu-custom a {
+  font-size: 2rem;
 }
