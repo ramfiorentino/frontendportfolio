@@ -23,6 +23,7 @@ interface KeyFeature {
 interface Project {
   _id: string;
   title: string;
+  slug: string;
   dateAndLocation: string;
   shortDescription: string;
   livesite: string;

@@ -179,7 +179,7 @@ function App() {
                     {/*📌📌📌*/}
                     <Link
                       to={`/project/${project._id}`}
-                      onClick={() => navigate(`/project/${project.slug}`)}
+                      onClick={() => navigate(`/project/${project._id}`)}
                     >
                       Full project showcase
                     </Link>
@@ -187,7 +187,7 @@ function App() {
                   {/*📌📌📌*/}
                   <button
                     className="btn rounded-full w-fit my-2"
-                    onClick={() => window.open(project.livesite, "_blank")}
+                    onClick={() => window.open(`${project.livesite}`, "_blank")}
                   >
                     Live Site
                   </button>

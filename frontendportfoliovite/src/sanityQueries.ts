@@ -4,6 +4,7 @@ export const fetchProjectById = async (projectId: string) => {
   const query = `*[_type == "project" && _id == $projectId][0] {
     _id,
     title,
+    slug,
     dateAndLocation,
     shortDescription,
     livesite,
