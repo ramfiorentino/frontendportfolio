@@ -161,7 +161,7 @@ export interface Project {
   description: string[];
   techStack: { icon: string, title: string }[];
   techStackText: string;
-  keyFeatures: keyFeatures[];
+  keyFeatures: KeyFeature[];
   solutions: string;
 }
 

@@ -88,8 +88,8 @@ function App() {
 
                 <div className="flex flex-col md:flex-row md:justify-between">
                 <button className="btn rounded-full w-fit my-2"><Link
-                  to={`/project/${project.id}`}
-                  onClick={() => navigate(`/project/${project.id}`)}
+                  to={`/project/${project.title}`}
+                  onClick={() => navigate(`/project/${project.title}`)}
                 >
                   Full project showcase
                 </Link>
