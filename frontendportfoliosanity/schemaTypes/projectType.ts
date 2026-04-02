@@ -5,7 +5,6 @@ export const projectType = defineType({
   title: 'Project',
   type: 'document',
   fields: [
-    defineField({name: 'name', title: 'Name', type: 'string'}),
     defineField({name: 'title', title: 'Title', type: 'string'}),
     defineField({name: 'slug', title: 'Slug', type: 'string'}),
     defineField({name: 'dateAndLocation', title: 'Date and Location', type: 'string'}),
@@ -17,16 +16,6 @@ export const projectType = defineType({
       type: 'array',
       of: [{type: 'reference', to: [{type: 'techStack'}]}],
     }),
-    defineField({name: 'techStackText', title: 'Tech Stack Text', type: 'text'}),
-    defineField({name: 'image', title: 'Image', type: 'image'}),
-    defineField({name: 'description', title: 'Description', type: 'text'}),
-    defineField({
-      name: 'keyFeatures',
-      title: 'Key Features',
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'keyFeatures'}]}],
-    }),
-    defineField({name: 'solutions', title: 'Solutions', type: 'text'}),
     defineField({name: 'gifUrl', title: 'GIF URL (thumbnail)', type: 'url'}),
     defineField({name: 'heroGifUrl', title: 'Hero GIF URL (project page)', type: 'url'}),
     defineField({
