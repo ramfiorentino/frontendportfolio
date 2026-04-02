@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import sanityClient from "./sanityClient";
+import brandasset from "./assets/brand-asset.png";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+
+interface BioProps {
+  heading: string;
+  paragraphDesk: string;
+  paragraphMobile: string;
+}
 
 function Bio() {
   const [bioData, setBioData] = useState<BioProps | null>(null);
