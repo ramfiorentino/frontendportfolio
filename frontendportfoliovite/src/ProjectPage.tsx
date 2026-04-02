@@ -69,9 +69,7 @@ function ProjectPage() {
     if (slug) {
       fetchProjectById(slug).then((data) => {
         setProject(data);
-        if (data?.sections?.length) {
-          setOpenSection(data.sections[0].title);
-        }
+        setOpenSection('The brief');
       });
     }
     fetchAllProjectSlugs().then(setAllProjects);
@@ -91,6 +89,29 @@ function ProjectPage() {
   const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
   const nextProject =
     currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
+
+  // Fallback sections if none are populated in Sanity yet
+  const effectiveSections: ProjectSection[] =
+    project.sections && project.sections.length > 0
+      ? project.sections
+      : [
+          {
+            title: 'The brief',
+            body: `${project.title}'s brief is on its way here!`,
+          },
+          {
+            title: 'The problem',
+            body: `${project.title}'s problem statement is on its way here!`,
+          },
+          {
+            title: 'My approach',
+            body: `${project.title}'s approach is on its way here!`,
+          },
+          {
+            title: 'Technical highlights',
+            body: `${project.title}'s technical highlights are on its way here!`,
+          },
+        ];
 
   const gifSrc = project.heroGifUrl || project.gifUrl;
 
@@ -258,7 +279,7 @@ function ProjectPage() {
         </div>
 
         {/* Accordion sections */}
-        {project.sections?.map((section) => {
+        {effectiveSections.map((section) => {
           const isOpen = openSection === section.title;
           return (
             <div key={section.title} className="border-b border-primary">
@@ -357,7 +378,7 @@ function ProjectPage() {
             </div>
 
             {/* Sections — all visible inline on desktop */}
-            {project.sections?.map((section) => (
+            {effectiveSections.map((section) => (
               <div key={section.title} className="px-5 py-4 border-b border-primary">
                 <p className="text-[9px] text-primary opacity-55 tracking-[0.09em] uppercase mb-2">
                   {section.title}
