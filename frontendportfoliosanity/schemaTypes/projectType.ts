@@ -27,5 +27,21 @@ export const projectType = defineType({
       of: [{type: 'reference', to: [{type: 'keyFeatures'}]}],
     }),
     defineField({name: 'solutions', title: 'Solutions', type: 'text'}),
+    defineField({name: 'gifUrl', title: 'GIF URL', type: 'url'}),
+    defineField({
+      name: 'metrics',
+      title: 'Metrics',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({name: 'value', title: 'Value', type: 'string'}),
+            defineField({name: 'label', title: 'Label', type: 'string'}),
+            defineField({name: 'highlight', title: 'Highlight', type: 'boolean'}),
+          ],
+        },
+      ],
+    }),
   ],
 })
