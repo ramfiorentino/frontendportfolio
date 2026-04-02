@@ -11,13 +11,6 @@ interface TechStack {
   icon: string;
 }
 
-interface KeyFeature {
-  _id: string;
-  title: string;
-  imageUrl: string;
-  description: string;
-}
-
 interface ProjectSection {
   title: string;
   body?: string;
@@ -39,12 +32,7 @@ interface Project {
   dateAndLocation: string;
   shortDescription: string;
   livesite: string;
-  image: string;
-  description: string[];
   techStack: TechStack[];
-  techStackText: string;
-  keyFeatures: KeyFeature[];
-  solutions: string;
   gifUrl?: string;
   heroGifUrl?: string;
   metrics?: ProjectMetric[];

@@ -12,10 +12,6 @@ interface Technology {
   _id: string;
 }
 
-interface KeyFeature {
-  description: string;
-}
-
 interface ProjectMetric {
   value: string;
   label: string;
@@ -30,7 +26,6 @@ interface Project {
   shortDescription: string;
   livesite: string;
   techStack: Technology[];
-  keyFeatures: KeyFeature[];
   gifUrl?: string;
   metrics?: ProjectMetric[];
 }
@@ -53,10 +48,6 @@ function App() {
           title,
           _id,
           icon
-        },
-        "keyFeatures": keyFeatures[]->{
-          _id,
-          description
         },
         gifUrl,
         "metrics": metrics
@@ -155,14 +146,14 @@ function App() {
                     <h3 className="text-lg md:text-2xl leading-tight">
                       {project.title}
                     </h3>
-                    <span className="text-xs opacity-60">
+                    <span className="text-xs">
                       {project.dateAndLocation}
                     </span>
                     <div className="flex flex-wrap gap-1 mt-1">
                       {project.techStack?.slice(0, 4).map((tech) => (
                         <span
                           key={tech._id}
-                          className="text-xs border border-primary rounded-full px-2 py-0.5 opacity-70"
+                          className="text-xs border border-primary rounded-full px-2 py-0.5"
                         >
                           {tech.title}
                         </span>
@@ -175,7 +166,7 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col items-end gap-2 flex-shrink-0">
+                  <div className="flex flex-col items-end flex-shrink-0 pt-6">
                     <button
                       className="btn btn-sm rounded-full"
                       onClick={(e) => {
@@ -183,20 +174,14 @@ function App() {
                         window.open(project.livesite, "_blank");
                       }}
                     >
-                      Live
+                      Live Site
                     </button>
                     <svg
-                      className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-                      fill="none"
+                      className={`w-6 h-10 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
                       viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      fill="currentColor"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
+                      <path d="M6 9l6 6 6-6H6z" />
                     </svg>
                   </div>
                 </div>
@@ -232,7 +217,7 @@ function App() {
                               <span className="text-xl font-bold">
                                 {metric.value}
                               </span>
-                              <span className="text-xs opacity-70">
+                              <span className="text-xs">
                                 {metric.label}
                               </span>
                             </div>

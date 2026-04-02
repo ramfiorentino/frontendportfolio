@@ -8,21 +8,11 @@ export const fetchProjectById = async (slug: string) => {
     dateAndLocation,
     shortDescription,
     livesite,
-    image,
-    "description": description,
     "techStack": techStack[]->{
       _id,
       title,
       icon
     },
-    techStackText,
-    "keyFeatures": keyFeatures[]->{
-      _id,
-      title,
-      "imageUrl": images[0].asset->url,
-      description
-    },
-    solutions,
     gifUrl,
     heroGifUrl,
     "metrics": metrics,
