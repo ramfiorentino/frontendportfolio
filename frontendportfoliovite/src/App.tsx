@@ -16,6 +16,12 @@ interface KeyFeature {
   description: string;
 }
 
+interface ProjectMetric {
+  value: string;
+  label: string;
+  highlight?: boolean;
+}
+
 interface Project {
   _id: string;
   title: string;
@@ -25,10 +31,13 @@ interface Project {
   livesite: string;
   techStack: Technology[];
   keyFeatures: KeyFeature[];
+  gifUrl?: string;
+  metrics?: ProjectMetric[];
 }
 
 function App() {
   const [projectsData, setProjectsData] = useState<Project[]>([]);
+  const [openCardId, setOpenCardId] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,7 +57,9 @@ function App() {
         "keyFeatures": keyFeatures[]->{
           _id,
           description
-        }
+        },
+        gifUrl,
+        "metrics": metrics
       }`;
 
       const result = await client.fetch(query);
@@ -64,8 +75,9 @@ function App() {
       <div id="hero-div" className="flex justify-end md:justify-between mx-6">
         <div className="flex flex-col hidden  md:flex z-0">
           <p className="text-xs w-2/3 mt-8 mb-4">
-            Hi! I'm a very curious Frontend Dev available from May 2023, always
-            looking to collaborate with creative teams. Let's talk!
+            Hi! I'm a very curious Frontend Dev, always eager to collaborate
+            with creative teams and meaningful businesses. Contact me! Scan or
+            click the QR code to shoot me a message ;)
           </p>
           <div id="qr-code" className="w-20">
             <img className="opacity-80" src={qrcode} />{" "}
@@ -82,9 +94,9 @@ function App() {
             <h1 className="text-right">Selected</h1>
             <div className="flex justify-end">
               <h1 className="text-right">Works</h1>
-              <h4 className="text-right">(5)</h4>
+              <h4 className="text-right">*</h4>
             </div>
-            <h1 className="text-right">2023-24</h1>
+            <h1 className="text-right">2025-26</h1>
           </div>
         </div>
       </div>
@@ -110,92 +122,183 @@ function App() {
         </div>
       </div>
 
-
       {/* PROJECTS LIST */}
-      <ul key={""}>
-        {projectsData.map((project) => (
-          <li key={project._id}>
+      <div className="border-t border-primary">
+        {projectsData.map((project) => {
+          const isOpen = openCardId === project._id;
+          return (
             <div
-              id="projectList-item"
-              className="collapse bg-base-200 md:px-2  w-full"
+              key={project._id}
+              className="border-b border-primary last:border-b-0 bg-base-100"
             >
-              <input type="checkbox"/>
-
+              {/* Collapsed header row */}
               <div
-                id="item-title"
-                className="collapse-title flex items-center justify-between px-4 md:justify-between"
+                className="flex items-stretch cursor-pointer min-h-[80px] md:min-h-[88px]"
+                onClick={() => setOpenCardId(isOpen ? null : project._id)}
               >
-                <div className="flex">
-                  <h3 className="w-28 self-center text-xl md:w-48 md:text-2xl h-30">{project.title}</h3>
-                  <div className="w-24 text-xs self-center hidden md:flex md:ml-2 md:w-32">
-                    {" "}
-                    {project.dateAndLocation}{" "}
-                  </div>
+                {/* GIF thumbnail column */}
+                <div className="w-16 md:w-24 flex-shrink-0 border-r border-primary overflow-hidden">
+                  {project.gifUrl ? (
+                    <img
+                      src={project.gifUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-base-200" />
+                  )}
                 </div>
-                <div className="flex items-center md:hidden md:justify-end">
-                  <div className="w-24 text-xs">
-                    {" "}
-                    {project.dateAndLocation}
-                  </div>
-                  <div className="btn rounded-full w-fit ml-4">Click ☺</div>
-                </div>
-                <div className="btn rounded-full w-fit ml-4 hidden md:flex">
-                  Click ☺
-                </div>
-              </div>
 
-              <div className="collapse-content">
-                <div className="md:flex md:justify-between">
-                  <p className="md:w-2/3 md:pt-10">
-                    {project.shortDescription}
-                  </p>
-                  <div className="flex my-4">
-                    {project.techStack.map((tech) => (
-                      <div key={tech._id}>
-                        <div
-                          id="singleTechIcon"
-                          className="flex flex-col items-center mr-2"
+                {/* Header body */}
+                <div className="flex flex-1 items-center justify-between px-4 py-3 gap-2">
+                  <div className="flex flex-col gap-1 min-w-0">
+                    <h3 className="text-lg md:text-2xl leading-tight">
+                      {project.title}
+                    </h3>
+                    <span className="text-xs opacity-60">
+                      {project.dateAndLocation}
+                    </span>
+                    <div className="flex flex-wrap gap-1 mt-1">
+                      {project.techStack?.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech._id}
+                          className="text-xs border border-primary rounded-full px-2 py-0.5 opacity-70"
                         >
-                          <div
-                            dangerouslySetInnerHTML={{ __html: tech.icon }}
-                          />
-                          <span className="text-xs">{tech.title}</span>
-                        </div>
-                      </div>
-                    ))}
+                          {tech.title}
+                        </span>
+                      ))}
+                      {project.techStack?.length > 4 && (
+                        <span className="text-xs border border-primary rounded-full px-2 py-0.5 opacity-50">
+                          +{project.techStack.length - 4}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col items-end gap-2 flex-shrink-0">
+                    <button
+                      className="btn btn-sm rounded-full"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(project.livesite, "_blank");
+                      }}
+                    >
+                      Live
+                    </button>
+                    <svg
+                      className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
                   </div>
                 </div>
-
-                <div className="flex flex-col md:flex-row md:justify-between">
-                  <button className="btn rounded-full w-fit my-2">
-                    <Link
-                      to={`/projects/${project.slug}`}
-                      onClick={() => navigate(`/projects/${project.slug}`)}
-                    >
-                      Full project showcase
-                    </Link>
-                  </button>
-                  <button
-                    className="btn rounded-full w-fit my-2"
-                    onClick={() => window.open(`${project.livesite}`, "_blank")}
-                  >
-                    Live Site
-                  </button>
-                </div>
               </div>
+
+              {/* Expanded body */}
+              {isOpen && (
+                <div className="border-t border-primary">
+                  <div className="flex flex-col md:flex-row">
+                    {/* Left: GIF hero */}
+                    <div className="md:w-1/3 border-b md:border-b-0 md:border-r border-primary">
+                      {project.gifUrl ? (
+                        <img
+                          src={project.gifUrl}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-48 md:h-full bg-base-200" />
+                      )}
+                    </div>
+
+                    {/* Right: content */}
+                    <div className="flex flex-col flex-1 p-4 md:p-6 gap-4">
+                      {/* Metrics grid */}
+                      {project.metrics && project.metrics.length > 0 && (
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                          {project.metrics.map((metric, i) => (
+                            <div
+                              key={i}
+                              className={`flex flex-col items-center justify-center border border-primary rounded p-2 text-center ${metric.highlight ? "bg-primary text-primary-content" : ""}`}
+                            >
+                              <span className="text-xl font-bold">
+                                {metric.value}
+                              </span>
+                              <span className="text-xs opacity-70">
+                                {metric.label}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      <p className="text-sm md:text-base">
+                        {project.shortDescription}
+                      </p>
+
+                      {/* Full tech stack chips */}
+                      <div className="flex flex-wrap gap-1">
+                        {project.techStack?.map((tech) => (
+                          <span
+                            key={tech._id}
+                            className="text-xs border border-primary rounded-full px-2 py-0.5"
+                          >
+                            {tech.title}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* CTAs */}
+                      <div className="flex gap-2 mt-auto pt-2">
+                        <button className="btn btn-sm rounded-full">
+                          <Link
+                            to={`/projects/${project.slug}`}
+                            onClick={() =>
+                              navigate(`/projects/${project.slug}`)
+                            }
+                          >
+                            Full showcase
+                          </Link>
+                        </button>
+                        <button
+                          className="btn btn-sm rounded-full"
+                          onClick={() =>
+                            window.open(project.livesite, "_blank")
+                          }
+                        >
+                          Live Site
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
-          </li>
-        ))}
+          );
+        })}
 
         {/* SPECIAL SECTIONS */}
-        <div id="section-howIWork" className="collapse bg-base-200 md:px-2 md:p-4 w-full py">
+        <div
+          id="section-howIWork"
+          className="collapse bg-base-200 md:px-2 md:p-4 w-full py"
+        >
           <input type="checkbox" />
           <div
             id="item-title"
             className="collapse-title flex items-center justify-between px-4"
           >
             <div className="flex justify-start">
-              <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">HOW I WORK!</h3>
+              <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">
+                HOW I WORK!
+              </h3>
               <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
                 I explain and showcase my project work in progress: photos,
                 project management archive, fun facts and more! HEHE
@@ -228,21 +331,28 @@ function App() {
                   rel="noopener noreferrer"
                   className="link link-hover"
                 >
-                Take me there!
+                  Take me there!
                 </a>
               </button>
             </div>
           </div>
         </div>
 
-        <div id="section-education" className="collapse bg-base-200 md:px-2 md:p-4 w-full">
+        <div
+          id="section-education"
+          className="collapse bg-base-200 md:px-2 md:p-4 w-full"
+        >
           <input type="checkbox" />
           <div
             id="item-title"
             className="collapse-title flex items-center justify-between px-4 md:justify-between"
           >
             <div className="flex">
-              <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">EDU-<br />CATION</h3>
+              <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">
+                EDU-
+                <br />
+                CATION
+              </h3>
               <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
                 Learning is what i love the most. Check out my last completed
                 education and courses!
@@ -269,27 +379,32 @@ function App() {
 
             <div className="flex flex-col md:flex-row md:justify-between">
               <button className="btn rounded-full w-fit my-2">
-              <a
+                <a
                   href="https://garrulous-track-baf.notion.site/Ram-Fiorentino-Education-59bf732e27b74101b255d8425b0c0d94?pvs=4"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link link-hover"
                 >
-                Take me there!
+                  Take me there!
                 </a>
               </button>
             </div>
           </div>
         </div>
 
-        <div id="section-comingUp" className="collapse bg-base-200 md:px-2 md:p-4 w-full">
+        <div
+          id="section-comingUp"
+          className="collapse bg-base-200 md:px-2 md:p-4 w-full"
+        >
           <input type="checkbox" />
           <div
             id="item-title"
             className="collapse-title flex items-center justify-between px-4 md:justify-between"
           >
             <div className="flex">
-              <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">COMING UP!</h3>
+              <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">
+                COMING UP!
+              </h3>
               <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
                 Want to see whats down the line? Projects, research, meetups and
                 more!
@@ -316,19 +431,19 @@ function App() {
 
             <div className="flex flex-col md:flex-row md:justify-between">
               <button className="btn rounded-full w-fit my-2">
-              <a
+                <a
                   href="https://garrulous-track-baf.notion.site/Ram-Fiorentino-Coming-up-c09c4eeb0c9541b9813fbe4cb3ccd899?pvs=4"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link link-hover"
                 >
-                Take me there!
+                  Take me there!
                 </a>
               </button>
             </div>
           </div>
         </div>
-      </ul>
+      </div>
       <Footer />
     </div>
   );

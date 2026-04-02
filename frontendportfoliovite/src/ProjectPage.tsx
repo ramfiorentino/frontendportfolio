@@ -78,7 +78,7 @@ function ProjectPage() {
         <input type="checkbox" />
         <div className="collapse-title flex px-2 py-4 items-center justify-between">
           <img src={ramStar} alt="SVG Graphic" />
-          <h3 className="">TechStack</h3>
+          <h3 className="">Tech Stack</h3>
         </div>
         <div className="collapse-content">
           <div className="flex flex-col items-start gap-4 my-4" id="tech-stack">
