@@ -1,8 +1,8 @@
 function Footer() {
   return (
     <div>
-      <div className="flex flex-col text-white bg-red-500 text-center text-xs py-4">
-        Designed and coded by<br/> ✦ RAM FIORENTINO ✦ <br/> <i>RAMFIORENTINO@PROTON.ME</i>
+      <div className="flex text-primary-content bg-primary items-center px-8">
+        <p> Designed and coded by ✦ RAM FIORENTINO ✦ <i>mariabf.bcn@gmail.com</i></p>
       </div>
     </div>
   );
