@@ -27,7 +27,8 @@ export const projectType = defineType({
       of: [{type: 'reference', to: [{type: 'keyFeatures'}]}],
     }),
     defineField({name: 'solutions', title: 'Solutions', type: 'text'}),
-    defineField({name: 'gifUrl', title: 'GIF URL', type: 'url'}),
+    defineField({name: 'gifUrl', title: 'GIF URL (thumbnail)', type: 'url'}),
+    defineField({name: 'heroGifUrl', title: 'Hero GIF URL (project page)', type: 'url'}),
     defineField({
       name: 'metrics',
       title: 'Metrics',
@@ -38,10 +39,35 @@ export const projectType = defineType({
           fields: [
             defineField({name: 'value', title: 'Value', type: 'string'}),
             defineField({name: 'label', title: 'Label', type: 'string'}),
-            defineField({name: 'highlight', title: 'Highlight', type: 'boolean'}),
+            defineField({name: 'highlight', title: 'Highlight (filled chip)', type: 'boolean'}),
+            defineField({name: 'isProjected', title: 'Is Projected?', type: 'boolean'}),
+            defineField({name: 'source', title: 'Source (if projected)', type: 'string'}),
           ],
         },
       ],
     }),
+    defineField({name: 'role', title: 'Role', type: 'string'}),
+    defineField({name: 'githubUrl', title: 'GitHub URL', type: 'url'}),
+    defineField({
+      name: 'sections',
+      title: 'Sections',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({name: 'title', title: 'Title', type: 'string'}),
+            defineField({name: 'body', title: 'Body (prose)', type: 'text'}),
+            defineField({
+              name: 'bullets',
+              title: 'Bullets (list)',
+              type: 'array',
+              of: [{type: 'string'}],
+            }),
+          ],
+        },
+      ],
+    }),
+    defineField({name: 'retrospective', title: "What I'd do differently", type: 'text'}),
   ],
 })
