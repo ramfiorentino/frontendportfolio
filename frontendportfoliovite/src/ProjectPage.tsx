@@ -304,16 +304,14 @@ function ProjectPage() {
         })}
 
         {/* Retrospective — always visible */}
-        {project.retrospective && (
-          <div className="px-3.5 py-3 border-b border-primary">
-            <p className="text-[9px] text-primary opacity-55 tracking-[0.07em] uppercase mb-2">
-              What I'd do differently
-            </p>
-            <blockquote className="border-l-2 border-primary pl-2.5 text-xs italic text-base-content/70 leading-relaxed">
-              {project.retrospective}
-            </blockquote>
-          </div>
-        )}
+        <div className="px-3.5 py-3 border-b border-primary">
+          <p className="text-[9px] text-primary opacity-55 tracking-[0.07em] uppercase mb-2">
+            What I'd do differently
+          </p>
+          <blockquote className="border-l-2 border-primary pl-2.5 text-xs italic text-base-content/70 leading-relaxed">
+            {project.retrospective || `${project.title}'s retrospective is on its way here!`}
+          </blockquote>
+        </div>
 
         {/* Prev / Next */}
         <PrevNextNav />
@@ -384,16 +382,14 @@ function ProjectPage() {
             ))}
 
             {/* Retrospective */}
-            {project.retrospective && (
-              <div className="px-5 py-4 border-b border-primary">
-                <p className="text-[9px] text-primary opacity-55 tracking-[0.09em] uppercase mb-2">
-                  What I'd do differently
-                </p>
-                <blockquote className="border-l-2 border-primary pl-3 py-1.5 text-xs italic text-base-content/70 opacity-85 leading-relaxed">
-                  {project.retrospective}
-                </blockquote>
-              </div>
-            )}
+            <div className="px-5 py-4 border-b border-primary">
+              <p className="text-[9px] text-primary opacity-55 tracking-[0.09em] uppercase mb-2">
+                What I'd do differently
+              </p>
+              <blockquote className="border-l-2 border-primary pl-3 py-1.5 text-xs italic text-base-content/70 opacity-85 leading-relaxed">
+                {project.retrospective || `${project.title}'s retrospective is on its way here!`}
+              </blockquote>
+            </div>
 
             {/* Prev / Next */}
             <PrevNextNav />
