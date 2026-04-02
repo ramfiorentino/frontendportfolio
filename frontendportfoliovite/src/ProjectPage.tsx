@@ -241,16 +241,14 @@ function ProjectPage() {
 
         {/* CTA buttons */}
         <div className="flex gap-2 px-3.5 py-2.5 border-b border-primary">
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 border border-primary rounded-full py-2 text-xs text-primary text-center"
-            >
-              GitHub repo
-            </a>
-          )}
+          <a
+            href={project.githubUrl || '#'}
+            target={project.githubUrl ? '_blank' : undefined}
+            rel="noopener noreferrer"
+            className={`flex-1 border border-primary rounded-full py-2 text-xs text-primary text-center ${!project.githubUrl ? 'opacity-30 pointer-events-none' : ''}`}
+          >
+            GitHub repo
+          </a>
           <a
             href={project.livesite}
             target="_blank"
@@ -267,7 +265,7 @@ function ProjectPage() {
             Tech stack
           </p>
           <div className="flex flex-wrap gap-1">
-            {project.techStack.map((t) => (
+            {project.techStack?.map((t) => (
               <span
                 key={t._id}
                 className="text-[9px] text-primary border border-primary rounded-full px-2 py-0.5"
@@ -336,16 +334,14 @@ function ProjectPage() {
             </p>
           </div>
           <div className="flex gap-2 items-end shrink-0">
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-primary rounded-full px-4 py-[7px] text-xs text-primary"
-              >
-                GitHub repo
-              </a>
-            )}
+            <a
+              href={project.githubUrl || '#'}
+              target={project.githubUrl ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              className={`border border-primary rounded-full px-4 py-[7px] text-xs text-primary ${!project.githubUrl ? 'opacity-30 pointer-events-none' : ''}`}
+            >
+              GitHub repo
+            </a>
             <a
               href={project.livesite}
               target="_blank"
@@ -423,7 +419,7 @@ function ProjectPage() {
                   Tech stack
                 </p>
                 <div className="flex flex-wrap gap-1">
-                  {project.techStack.map((t) => (
+                  {project.techStack?.map((t) => (
                     <span
                       key={t._id}
                       className="text-[10px] text-primary border border-primary rounded-full px-[9px] py-0.5"
