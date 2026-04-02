@@ -39,7 +39,7 @@ body {
   @apply border-primary;
   @apply rounded-none;
   @apply bg-transparent;
-  @apply border-b-2;
+  @apply border-b;
   @apply border-primary;
 }
 
@@ -145,7 +145,7 @@ a, summary {
   min-height: 118px;
 }
 
-/* Section colors for simply-red theme only */
+/* Section colors for simply-red theme only 
 [data-theme="simply-red"] #section-howIWork {
   background-color: #89dffe;
 }
@@ -153,6 +153,7 @@ a, summary {
 [data-theme="simply-red"] #section-education {
   background-color: #F5C032;
 }
+*/
 
 #brandasset {
   animation: Swing 7s ease-in-out infinite;
