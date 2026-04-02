@@ -1,4 +1,4 @@
-import sanityClient from './sanityClient'; // Ensure this is the correct path to your Sanity client
+import sanityClient from './sanityClient';
 
 export const fetchProjectById = async (slug: string) => {
   const query = `*[_type == "project" && slug == $slug][0] {
@@ -19,12 +19,27 @@ export const fetchProjectById = async (slug: string) => {
     "keyFeatures": keyFeatures[]->{
       _id,
       title,
-      "imageUrl": images[0].asset->url, // Assuming you want to display the first image
+      "imageUrl": images[0].asset->url,
       description
     },
-    solutions
+    solutions,
+    gifUrl,
+    heroGifUrl,
+    "metrics": metrics,
+    role,
+    githubUrl,
+    "sections": sections[] {
+      title,
+      body,
+      bullets
+    },
+    retrospective
   }`;
 
-  const params = { slug };
-  return await sanityClient.fetch(query, params);
+  return await sanityClient.fetch(query, { slug });
+};
+
+export const fetchAllProjectSlugs = async (): Promise<{ title: string; slug: string }[]> => {
+  const query = `*[_type == "project"] | order(_createdAt asc) { title, slug }`;
+  return await sanityClient.fetch(query);
 };

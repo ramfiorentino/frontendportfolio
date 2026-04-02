@@ -12,6 +12,7 @@
   "dependencies": {
     "@sanity/client": "^7.20.0",
     "@sanity/image-url": "^2.1.1",
+    "qrcode.react": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0"
