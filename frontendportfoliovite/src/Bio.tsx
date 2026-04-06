@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import sanityClient from "./sanityClient";
-import brandasset from "./assets/brand-asset.png";
+import { BrandAsset } from "./components/BrandAsset";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -37,12 +37,7 @@ console.log(bioData)
           Hello! ☺ I’m Ram Fiorentino, a collaborative Frontend Dev & Visual
           Designer
         </h2>
-        <img
-          id="brandasset"
-          src={brandasset}
-          alt=""
-          className="w-60 h-40 scale-125 mt-20 absolute right-8 opacity-60 md:scale-150 md:pr-6 md:justify-self-end"
-        />
+        <BrandAsset className="w-60 h-40 scale-125 mt-20 absolute right-8 opacity-60 md:scale-150 md:pr-6 md:justify-self-end" />
       </div>
       <div className="md:flex md:flex-col">
         <div className="flex mx-2 my-5 justify-between md:mx-20">

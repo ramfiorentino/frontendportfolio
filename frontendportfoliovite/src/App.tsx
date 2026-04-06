@@ -4,7 +4,7 @@ import client from "./sanityClient";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import qrcode from "./assets/qrcode-mockup.png";
-import brandasset from "./assets/brand-asset.png";
+import { BrandAsset } from "./components/BrandAsset";
 
 interface Technology {
   title: string;
@@ -74,12 +74,7 @@ function App() {
             <img className="opacity-80" src={qrcode} />{" "}
           </div>
         </div>
-        <img
-          id="brandasset"
-          src={brandasset}
-          alt=""
-          className="w-60 h-40 scale-125 mt-20 absolute right-8 opacity-60 md:pr-6 md:justify-self-end lg::opacity-90"
-        />
+        <BrandAsset className="w-60 h-40 scale-125 mt-20 absolute right-8 opacity-60 md:pr-6 md:justify-self-end lg::opacity-90" />
         <div className="flex justify-end my-8 z-10">
           <div className="w-72">
             <h1 className="text-right">Selected</h1>
