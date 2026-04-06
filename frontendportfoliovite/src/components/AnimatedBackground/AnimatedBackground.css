@@ -1,0 +1,72 @@
+/* ── Gradient background with cursor parallax ────────────────────────────── */
+.animated-bg__glitter {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  /* Parallax: shifts ±20px around center as cursor moves corner-to-corner */
+  --bgoffsetx: calc(20px * (var(--ratio-x, 0.5) - 0.5));
+  --bgoffsety: calc(20px * (var(--ratio-y, 0.5) - 0.5));
+
+  background-color: #10021e;
+
+  background-image: url('/assets/noise.png');
+  background-size: 120%;
+  background-repeat: no-repeat;
+  background-position:
+    calc(50% + var(--bgoffsetx)) calc(50% + var(--bgoffsety));
+}
+
+/* ── Video background ─────────────────────────────────────────────────────── */
+.animated-bg__video {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* ── Cursor spotlight ─────────────────────────────────────────────────────── */
+.animated-bg__spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+
+  mix-blend-mode: screen;
+
+  background: radial-gradient(
+    farthest-corner circle at
+      calc(100% * var(--ratio-x, 0.5))
+      calc(100% * var(--ratio-y, 0.5)),
+    hsla(0, 0%, 100%, 0.2)  10px,
+    hsla(0, 0%, 50%, 0.2)   80px,
+    transparent              20%
+  );
+}
+
+.animated-bg__spotlight.active {
+  opacity: 1;
+}
+
+/* ── Disable on touch / coarse-pointer devices ────────────────────────────── */
+@media (pointer: coarse) {
+  .animated-bg__glitter,
+  .animated-bg__spotlight {
+    display: none !important;
+  }
+}
+
+/* ── Disable for reduced-motion preference ────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .animated-bg__glitter,
+  .animated-bg__spotlight {
+    display: none !important;
+  }
+}
