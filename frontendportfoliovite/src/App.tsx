@@ -23,6 +23,7 @@ interface Project {
   title: string;
   slug: string;
   dateAndLocation: string;
+  industry?: string;
   shortDescription: string;
   livesite: string;
   techStack: Technology[];
@@ -42,6 +43,7 @@ function App() {
         title,
         slug,
         dateAndLocation,
+        industry,
         shortDescription,
         livesite,
         "techStack": techStack[]->{
@@ -144,6 +146,9 @@ function App() {
                     <span className="text-xs">
                       {project.dateAndLocation}
                     </span>
+                    {project.industry && (
+                      <span className="text-xs">{project.industry}</span>
+                    )}
                     <div className="flex flex-wrap gap-1 mt-1">
                       {project.techStack?.slice(0, 4).map((tech) => (
                         <span

@@ -8,6 +8,7 @@ export const projectType = defineType({
     defineField({name: 'title', title: 'Title', type: 'string'}),
     defineField({name: 'slug', title: 'Slug', type: 'string'}),
     defineField({name: 'dateAndLocation', title: 'Date and Location', type: 'string'}),
+    defineField({name: 'industry', title: 'Industry', type: 'string'}),
     defineField({name: 'livesite', title: 'Live Site', type: 'url'}),
     defineField({name: 'shortDescription', title: 'Short Description', type: 'string'}),
     defineField({
