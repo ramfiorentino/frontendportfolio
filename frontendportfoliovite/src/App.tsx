@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import client from "./sanityClient";
 import Navbar from "./Navbar";
@@ -34,7 +34,22 @@ interface Project {
 function App() {
   const [projectsData, setProjectsData] = useState<Project[]>([]);
   const [openCardId, setOpenCardId] = useState<string | null>(null);
+  const [collapsingId, setCollapsingId] = useState<string | null>(null);
+  const thumbnailTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navigate = useNavigate();
+
+  const handleCardToggle = (id: string) => {
+    const isOpening = openCardId !== id;
+    if (thumbnailTimerRef.current) clearTimeout(thumbnailTimerRef.current);
+    if (isOpening) {
+      setCollapsingId(null);
+      setOpenCardId(id);
+    } else {
+      setCollapsingId(id);
+      setOpenCardId(null);
+      thumbnailTimerRef.current = setTimeout(() => setCollapsingId(null), 700);
+    }
+  };
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -122,10 +137,10 @@ function App() {
               {/* Collapsed header row */}
               <div
                 className="flex items-stretch cursor-pointer min-h-[80px] md:min-h-[88px]"
-                onClick={() => setOpenCardId(isOpen ? null : project._id)}
+                onClick={() => handleCardToggle(project._id)}
               >
                 {/* GIF thumbnail column */}
-                <div className="w-1/5 hidden md:block flex-shrink-0 border-r border-primary overflow-hidden">
+                <div className={`w-1/5 flex-shrink-0 border-r border-primary overflow-hidden hidden ${!isOpen && collapsingId !== project._id ? "md:block" : ""}`}>
                   {project.gifUrl ? (
                     <img
                       src={project.gifUrl}
@@ -189,7 +204,7 @@ function App() {
 
               {/* Expanded body */}
               <div
-                className="overflow-hidden transition-all duration-400 ease-in-out"
+                className="overflow-hidden transition-all duration-700 ease-in-out"
                 style={{ maxHeight: isOpen ? "700px" : "0px" }}
               >
                 <div className="border-t border-primary">
