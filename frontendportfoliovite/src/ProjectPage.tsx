@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import Navbar from './Navbar';
+import { useThemePrimaryColor } from './hooks/useThemePrimaryColor';
 import Footer from './Footer';
 import { useEffect, useState } from 'react';
 import { fetchProjectById, fetchAllProjectSlugs } from './sanityQueries';
@@ -49,6 +50,7 @@ interface ProjectNav {
 
 function ProjectPage() {
   const { slug } = useParams<{ slug: string }>();
+  const primaryColor = useThemePrimaryColor();
   const [project, setProject] = useState<Project | null>(null);
   const [allProjects, setAllProjects] = useState<ProjectNav[]>([]);
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -187,7 +189,9 @@ function ProjectPage() {
         {/* Hero row: QR col (72px) + title col */}
         <div className="flex border-b border-primary">
           <div className="w-[72px] shrink-0 border-r border-primary bg-base-200 flex flex-col items-center justify-center gap-1.5 py-3">
-            <QRCodeSVG value={project.livesite} size={44} level="L" />
+            <a href={project.livesite} target="_blank" rel="noopener noreferrer">
+              <QRCodeSVG value={project.livesite} size={44} level="L" fgColor={primaryColor} bgColor="transparent" />
+            </a>
             <span className="text-[8px] text-primary opacity-60 tracking-wider uppercase">Scan</span>
           </div>
           <div className="flex-1 px-3.5 py-3 flex flex-col justify-between">
@@ -445,9 +449,9 @@ function ProjectPage() {
                   Scan to visit
                 </p>
                 <div className="flex items-center gap-2.5">
-                  <div className="w-[52px] h-[52px] border border-primary rounded bg-base-200 flex items-center justify-center shrink-0 p-1">
-                    <QRCodeSVG value={project.livesite} size={40} level="L" />
-                  </div>
+                  <a href={project.livesite} target="_blank" rel="noopener noreferrer" className="w-[52px] h-[52px] border border-primary rounded bg-base-200 flex items-center justify-center shrink-0 p-1">
+                    <QRCodeSVG value={project.livesite} size={40} level="L" fgColor={primaryColor} bgColor="transparent" />
+                  </a>
                   <p className="text-[9px] text-primary opacity-60 leading-relaxed">
                     Live site
                     <br />

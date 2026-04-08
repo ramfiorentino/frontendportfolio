@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import client from "./sanityClient";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import qrcode from "./assets/qrcode-mockup.png";
+import { QRCodeSVG } from "qrcode.react";
 import { BrandAsset } from "./components/BrandAsset";
+import { useThemePrimaryColor } from "./hooks/useThemePrimaryColor";
 
 interface Technology {
   title: string;
@@ -36,6 +37,7 @@ function App() {
   const [openCardId, setOpenCardId] = useState<string | null>(null);
   const [collapsingId, setCollapsingId] = useState<string | null>(null);
   const thumbnailTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const primaryColor = useThemePrimaryColor();
   const navigate = useNavigate();
 
   const handleCardToggle = (id: string) => {
@@ -47,7 +49,7 @@ function App() {
     } else {
       setCollapsingId(id);
       setOpenCardId(null);
-      thumbnailTimerRef.current = setTimeout(() => setCollapsingId(null), 700);
+      thumbnailTimerRef.current = setTimeout(() => setCollapsingId(null), 600);
     }
   };
 
@@ -87,9 +89,9 @@ function App() {
             with creative teams and meaningful businesses. Contact me! Scan or
             click the QR code to shoot me a message ;)
           </p>
-          <div id="qr-code" className="w-20">
-            <img className="opacity-80" src={qrcode} />{" "}
-          </div>
+          <a href="https://lin.ky/ramfiorentino" target="_blank" rel="noopener noreferrer" className="w-20 block">
+            <QRCodeSVG value="https://lin.ky/ramfiorentino" size={80} level="L" fgColor={primaryColor} bgColor="transparent" />
+          </a>
         </div>
         <BrandAsset className="w-60 h-40 scale-125 mt-20 absolute right-8 opacity-60 md:pr-6 md:justify-self-end lg::opacity-90" />
         <div className="flex justify-end my-8 z-10">
@@ -136,11 +138,11 @@ function App() {
             >
               {/* Collapsed header row */}
               <div
-                className="flex items-stretch cursor-pointer min-h-[80px] md:min-h-[88px]"
+                className="flex items-stretch cursor-pointer min-h-[80px] md:min-h-[88px] h-[186px]"
                 onClick={() => handleCardToggle(project._id)}
               >
                 {/* GIF thumbnail column */}
-                <div className={`w-1/5 flex-shrink-0 border-r border-primary overflow-hidden hidden ${!isOpen && collapsingId !== project._id ? "md:block" : ""}`}>
+                <div className={`w-1/4 flex-shrink-0 overflow-hidden hidden ${!isOpen && collapsingId !== project._id ? "md:block" : ""}`}>
                   {project.gifUrl ? (
                     <img
                       src={project.gifUrl}
@@ -210,7 +212,7 @@ function App() {
                 <div className="border-t border-primary">
                   <div className="flex flex-col md:flex-row">
                     {/* Left: GIF hero */}
-                    <div className="md:w-1/3 border-b md:border-b-0 md:border-r border-primary">
+                    <div className="md:w-1/2">
                       {project.gifUrl ? (
                         <img
                           src={project.gifUrl}
