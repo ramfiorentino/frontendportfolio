@@ -282,11 +282,14 @@ function ProjectPage() {
                   {isOpen ? '−' : '+'}
                 </span>
               </button>
-              {isOpen && (
+              <div
+                className="overflow-hidden transition-all duration-400 ease-in-out"
+                style={{ maxHeight: isOpen ? "400px" : "0px" }}
+              >
                 <div className="px-3.5 pb-3">
                   <SectionContent section={section} />
                 </div>
-              )}
+              </div>
             </div>
           );
         })}

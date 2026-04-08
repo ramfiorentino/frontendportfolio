@@ -9,7 +9,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="navbar bg-base-100 justify-between md:h-24">
+      <div className="navbar justify-between md:h-24">
         <div className="navbar-start">
           <Link className="link link-hover" to="/" onClick={() => setMenuOpen(false)}>
             <h3>RAM FIORENTINO</h3>

@@ -49,7 +49,7 @@ function App() {
           _id,
           icon
         },
-        gifUrl,
+        "gifUrl": gifUrl.asset->url,
         "metrics": metrics
       }`;
 
@@ -65,7 +65,7 @@ function App() {
       <Navbar />
       <div id="hero-div" className="flex justify-end md:justify-between mx-6">
         <div className="flex flex-col hidden  md:flex z-0">
-          <p className="text-xs w-2/3 mt-8 mb-4">
+          <p className="text-s w-2/3 mt-8 mb-4">
             Hi! I'm a very curious Frontend Dev, always eager to collaborate
             with creative teams and meaningful businesses. Contact me! Scan or
             click the QR code to shoot me a message ;)
@@ -115,7 +115,7 @@ function App() {
           return (
             <div
               key={project._id}
-              className="border-b border-primary last:border-b-0 bg-base-100"
+              className="border-b border-primary last:border-b-0"
             >
               {/* Collapsed header row */}
               <div
@@ -123,7 +123,7 @@ function App() {
                 onClick={() => setOpenCardId(isOpen ? null : project._id)}
               >
                 {/* GIF thumbnail column */}
-                <div className="w-16 md:w-24 flex-shrink-0 border-r border-primary overflow-hidden">
+                <div className="w-1/5 hidden md:block flex-shrink-0 border-r border-primary overflow-hidden">
                   {project.gifUrl ? (
                     <img
                       src={project.gifUrl}
@@ -183,7 +183,10 @@ function App() {
               </div>
 
               {/* Expanded body */}
-              {isOpen && (
+              <div
+                className="overflow-hidden transition-all duration-400 ease-in-out"
+                style={{ maxHeight: isOpen ? "700px" : "0px" }}
+              >
                 <div className="border-t border-primary">
                   <div className="flex flex-col md:flex-row">
                     {/* Left: GIF hero */}
@@ -260,7 +263,7 @@ function App() {
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           );
         })}
@@ -288,10 +291,6 @@ function App() {
               <div className="w-24 text-xs uppercase">
                 I explain and showcase...
               </div>
-              <div className="btn rounded-full w-fit ml-4">Click ☺</div>
-            </div>
-            <div className="btn rounded-full w-fit ml-4 hidden md:flex">
-              Click ☺
             </div>
           </div>
 
@@ -342,10 +341,6 @@ function App() {
               <div className="w-24 text-xs uppercase">
                 Learning is what i love the most...
               </div>
-              <div className="btn rounded-full w-fit ml-4">Click ☺</div>
-            </div>
-            <div className="btn rounded-full w-fit ml-4 hidden md:flex">
-              Click ☺
             </div>
           </div>
 
@@ -383,36 +378,30 @@ function App() {
           >
             <div className="flex">
               <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">
-                COMING UP!
+                OH SPICY TECH! PODCAST
               </h3>
               <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
-                Want to see whats down the line? Projects, research, meetups and
-                more!
+                Stories and readings around tech and creativity, by Ram Fiorentino and guests.
               </div>
             </div>
             <div className="flex items-center md:hidden md:justify-end">
               <div className="w-24 text-xs uppercase">
-                Want to see whats down the line?
+                Stories and readings around tech and creativity, by Ram Fiorentino and guests.
               </div>
-              <div className="btn rounded-full w-fit ml-4">Click ☺</div>
-            </div>
-            <div className="btn rounded-full w-fit ml-4 hidden md:flex">
-              Click ☺
             </div>
           </div>
 
           <div className="collapse-content">
             <div className="md:flex md:justify-between md:hidden">
               <p className="md:w-2/3 my-4">
-                Want to see whats down the line? Projects, research, meetups and
-                more!
+                Stories and readings around tech and creativity, by Ram Fiorentino and guests.
               </p>
             </div>
 
             <div className="flex flex-col md:flex-row md:justify-between">
               <button className="btn rounded-full w-fit my-2">
                 <a
-                  href="https://garrulous-track-baf.notion.site/Ram-Fiorentino-Coming-up-c09c4eeb0c9541b9813fbe4cb3ccd899?pvs=4"
+                  href="https://www.youtube.com/@ohspicytech"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link link-hover"

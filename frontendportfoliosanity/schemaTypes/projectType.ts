@@ -16,8 +16,8 @@ export const projectType = defineType({
       type: 'array',
       of: [{type: 'reference', to: [{type: 'techStack'}]}],
     }),
-    defineField({name: 'gifUrl', title: 'GIF URL (thumbnail)', type: 'url'}),
-    defineField({name: 'heroGifUrl', title: 'Hero GIF URL (project page)', type: 'url'}),
+    defineField({name: 'gifUrl', title: 'GIF / thumbnail image', type: 'image', options: {accept: 'image/*'}}),
+    defineField({name: 'heroGifUrl', title: 'Hero GIF / image (project page)', type: 'image', options: {accept: 'image/*'}}),
     defineField({
       name: 'metrics',
       title: 'Metrics',

@@ -13,8 +13,8 @@ export const fetchProjectById = async (slug: string) => {
       title,
       icon
     },
-    gifUrl,
-    heroGifUrl,
+    "gifUrl": gifUrl.asset->url,
+    "heroGifUrl": heroGifUrl.asset->url,
     "metrics": metrics,
     role,
     githubUrl,
