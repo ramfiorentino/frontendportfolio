@@ -112,7 +112,7 @@ function ProjectPage() {
       <div className="w-[80px] h-[58px] border-2 border-primary rounded flex items-center justify-center">
         <div className="w-0 h-0 ml-1 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[17px] border-l-primary" />
       </div>
-      <span className="text-[9px] text-primary opacity-55 tracking-[0.07em] uppercase">
+      <span className="text-[9px] text-primary tracking-[0.07em] uppercase">
         Hero GIF — 10–20s loop
       </span>
     </div>
@@ -120,11 +120,11 @@ function ProjectPage() {
 
   const SectionContent = ({ section }: { section: ProjectSection }) =>
     section.body ? (
-      <p className="text-xs text-base-content/70 leading-relaxed">{section.body}</p>
+      <p className="text-base-content leading-relaxed">{section.body}</p>
     ) : (
       <ul className="flex flex-col gap-1.5 mt-1">
         {section.bullets?.map((b, i) => (
-          <li key={i} className="flex gap-2 text-[11px] text-base-content/70 leading-relaxed">
+          <li key={i} className="flex gap-2 text-[11px] text-base-content leading-relaxed">
             <span className="text-primary shrink-0">→</span>
             {b}
           </li>
@@ -137,9 +137,9 @@ function ProjectPage() {
       {project.metrics?.slice(0, 4).map((m, i) => (
         <div key={i} className="bg-base-100 p-[10px]">
           <div className={`font-medium text-primary leading-none ${valSize}`}>{m.value}</div>
-          <div className="text-[9px] text-primary opacity-60 mt-0.5 leading-tight">{m.label}</div>
+          <div className="text-[9px mt-0.5 leading-tight">{m.label}</div>
           {m.isProjected && (
-            <div className="text-[8px] text-primary opacity-45 italic">{m.source}</div>
+            <div className="text-[8px] text-primary italic">{m.source}</div>
           )}
         </div>
       ))}
@@ -153,7 +153,7 @@ function ProjectPage() {
           to={`/projects/${prevProject.slug}`}
           className="flex-1 px-5 py-3.5 text-xs text-primary border-r border-primary"
         >
-          <span className="block text-[8px] opacity-50 tracking-[0.07em] uppercase mb-0.5">
+          <span className="block text-[8px] tracking-[0.07em] uppercase mb-0.5">
             ← Previous project
           </span>
           {prevProject.title}
@@ -166,7 +166,7 @@ function ProjectPage() {
           to={`/projects/${nextProject.slug}`}
           className="flex-1 px-5 py-3.5 text-xs text-primary text-right"
         >
-          <span className="block text-[8px] opacity-50 tracking-[0.07em] uppercase mb-0.5">
+          <span className="block text-[8px] tracking-[0.07em] uppercase mb-0.5">
             Next project →
           </span>
           {nextProject.title}
@@ -192,17 +192,17 @@ function ProjectPage() {
             <a href={project.livesite} target="_blank" rel="noopener noreferrer">
               <QRCodeSVG value={project.livesite} size={44} level="L" fgColor={primaryColor} bgColor="transparent" />
             </a>
-            <span className="text-[8px] text-primary opacity-60 tracking-wider uppercase">Scan</span>
+            <span className="text-[8px] text-primary tracking-wider uppercase">Scan</span>
           </div>
           <div className="flex-1 px-3.5 py-3 flex flex-col justify-between">
-            <Link to="/" className="text-[9px] text-primary opacity-60 flex items-center gap-1 mb-2">
+            <Link to="/" className="text-[9px] text-primary flex items-center gap-1 mb-2">
               ← Works
             </Link>
             <div>
               <h2 className="text-[26px] font-medium text-primary text-right leading-none">
                 {project.title}
               </h2>
-              <p className="text-[9px] text-primary opacity-55 text-right mt-1.5">
+              <p className="text-[9px] text-primary text-right mt-1.5">
                 {project.dateAndLocation}
                 {project.role ? ` · ${project.role}` : ''}
               </p>
@@ -253,7 +253,7 @@ function ProjectPage() {
 
         {/* Tech stack — always visible */}
         <div className="px-3.5 py-2.5 border-b border-primary">
-          <p className="text-[9px] text-primary opacity-55 tracking-[0.07em] uppercase mb-1.5">
+          <p className="text-[9px] text-primary tracking-[0.07em] uppercase mb-1.5">
             Tech stack
           </p>
           <div className="flex flex-wrap gap-1">
@@ -300,10 +300,10 @@ function ProjectPage() {
 
         {/* Retrospective — always visible */}
         <div className="px-3.5 py-3 border-b border-primary">
-          <p className="text-[9px] text-primary opacity-55 tracking-[0.07em] uppercase mb-2">
+          <p className="text-[9px] text-primary tracking-[0.07em] uppercase mb-2">
             What I'd do differently
           </p>
-          <blockquote className="border-l-2 border-primary pl-2.5 text-xs italic text-base-content/70 leading-relaxed">
+          <blockquote className="border-l-2 border-primary pl-2.5 text-xs italic text-base-content leading-relaxed">
             {project.retrospective || `${project.title}'s retrospective is on its way here!`}
           </blockquote>
         </div>
@@ -321,7 +321,7 @@ function ProjectPage() {
         <div className="flex items-end justify-between gap-4 px-6 py-5 border-b border-primary">
           <div>
             <h1 className="text-[42px] font-medium text-primary leading-none">{project.title}</h1>
-            <p className="text-[10px] text-primary opacity-60 mt-1">
+            <p className="text-[10px] text-primary mt-1">
               {project.dateAndLocation}
               {project.role ? ` · ${project.role}` : ''}
             </p>
@@ -369,7 +369,7 @@ function ProjectPage() {
             {/* Sections — all visible inline on desktop */}
             {effectiveSections.map((section) => (
               <div key={section.title} className="px-5 py-4 border-b border-primary">
-                <p className="text-[9px] text-primary opacity-55 tracking-[0.09em] uppercase mb-2">
+                <p className="text-[9px] text-primary tracking-[0.09em] uppercase mb-2">
                   {section.title}
                 </p>
                 <SectionContent section={section} />
@@ -378,10 +378,10 @@ function ProjectPage() {
 
             {/* Retrospective */}
             <div className="px-5 py-4 border-b border-primary">
-              <p className="text-[9px] text-primary opacity-55 tracking-[0.09em] uppercase mb-2">
+              <p className="text-[9px] text-primary tracking-[0.09em] uppercase mb-2">
                 What I'd do differently
               </p>
-              <blockquote className="border-l-2 border-primary pl-3 py-1.5 text-xs italic text-base-content/70 opacity-85 leading-relaxed">
+              <blockquote className="border-l-2 border-primary pl-3 py-1.5 text-xs italic text-base-content leading-relaxed">
                 {project.retrospective || `${project.title}'s retrospective is on its way here!`}
               </blockquote>
             </div>
@@ -397,7 +397,7 @@ function ProjectPage() {
               {/* Impact metrics */}
               {project.metrics && project.metrics.length > 0 && (
                 <div>
-                  <p className="text-[9px] text-primary opacity-55 tracking-[0.08em] uppercase mb-2">
+                  <p className="text-[9px] text-primary tracking-[0.08em] uppercase mb-2">
                     Impact metrics
                   </p>
                   <MetricGrid valSize="text-[20px]" />
@@ -406,7 +406,7 @@ function ProjectPage() {
 
               {/* Tech stack */}
               <div>
-                <p className="text-[9px] text-primary opacity-55 tracking-[0.08em] uppercase mb-2">
+                <p className="text-[9px] text-primary tracking-[0.08em] uppercase mb-2">
                   Tech stack
                 </p>
                 <div className="flex flex-wrap gap-1">
@@ -424,7 +424,7 @@ function ProjectPage() {
               {/* Progress dots */}
               {allProjects.length > 0 && (
                 <div>
-                  <p className="text-[9px] text-primary opacity-55 tracking-[0.08em] uppercase mb-2">
+                  <p className="text-[9px] text-primary tracking-[0.08em] uppercase mb-2">
                     Portfolio
                   </p>
                   <div className="flex gap-1 mb-1">
@@ -437,7 +437,7 @@ function ProjectPage() {
                       />
                     ))}
                   </div>
-                  <p className="text-[9px] text-primary opacity-50">
+                  <p className="text-[9px] text-primary">
                     {currentIndex + 1} of {allProjects.length} projects
                   </p>
                 </div>
@@ -445,14 +445,14 @@ function ProjectPage() {
 
               {/* QR code */}
               <div>
-                <p className="text-[9px] text-primary opacity-55 tracking-[0.08em] uppercase mb-2">
+                <p className="text-[9px] text-primary tracking-[0.08em] uppercase mb-2">
                   Scan to visit
                 </p>
                 <div className="flex items-center gap-2.5">
                   <a href={project.livesite} target="_blank" rel="noopener noreferrer" className="w-[52px] h-[52px] border border-primary rounded bg-base-200 flex items-center justify-center shrink-0 p-1">
                     <QRCodeSVG value={project.livesite} size={40} level="L" fgColor={primaryColor} bgColor="transparent" />
                   </a>
-                  <p className="text-[9px] text-primary opacity-60 leading-relaxed">
+                  <p className="text-[9px] text-primary leading-relaxed">
                     Live site
                     <br />
                     {project.livesite.replace(/^https?:\/\//, '')}

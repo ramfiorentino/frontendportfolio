@@ -1,5 +1,5 @@
 import { useTheme } from '../ThemeContext';
-import brandasset from '../assets/brand-asset.png';
+import brandasset from '../assets/brand_monochrome.svg';
 import brandLilac from '../assets/brand_monochrome_lilac.svg';
 
 interface BrandAssetProps {

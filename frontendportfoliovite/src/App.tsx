@@ -113,7 +113,7 @@ function App() {
             and mantaining clean code and agile work. Strategic, meaningful, and
             impactful work by a frontend developer focused on coding effective
             UIs, facilitating optimized performance and mantaining clean code
-            and agile work.
+            and agile work. 
           </div>
 
           <div className="horizontalscrollingitems__item text-primary-content bg-primary">
@@ -122,7 +122,7 @@ function App() {
             and mantaining clean code and agile work. Strategic, meaningful, and
             impactful work by a frontend developer focused on coding effective
             UIs, facilitating optimized performance and mantaining clean code
-            and agile work.
+            and agile work. 
           </div>
         </div>
       </div>
