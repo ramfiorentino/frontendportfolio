@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import headshot from "./assets/ram-headshot-edit.jpeg";
 import { useState, useEffect } from "react";
 import sanityClient from "./sanityClient";
 import { BrandAsset } from "./components/BrandAsset";
@@ -47,10 +48,11 @@ console.log(bioData)
             </p>
             <button className="btn rounded-full mr-2"> About </button>
             <button className="btn rounded-full"> Me </button>
-            <h4 id="bioHeading" className="mt-7 leading-7 md:mt-9 md:text-4xl">
+            <h4 id="bioHeading" className="mt-7 leading-7 md:mt-9 md:text-3xl">
               {bioData.heading}
             </h4>
-            <p className="hidden mt-8 leading-5 md:flex md:mb-8 md:text-m">
+            <img src={headshot} alt="Ram Fiorentino" className="w-60 mt-8 mb-4 object-cover" />
+            <p className="mt-0 leading-5 md:flex md:mb-8 md:text-m">
               Frontend Software Engineer with 5+ years of experience building scalable and performant web products across freelance, studio,
 and enterprise environments. Track record of independently driving quality improvements — from structured AI integration guides
 to cross-layer debugging and performance audits. Experienced in owning internal documentation and knowledge bases in
@@ -58,10 +60,6 @@ Confluence, and in producing onboarding, troubleshooting, and architectural docu
 teams navigating rapid technological transition. Fluent in English (C1) and Spanish (Native).
             </p>
             <p>I'm open for work! How would you leverage my skillset? Let me know ;) mariabf.bcn@gmail.com</p>
-            <p className="md:hidden mt-2 leading-5">
-              Available now, always looking to collaborate with
-              creative teams. Let’s talk!
-            </p>
           </section>
                     <div className="hidden md:flex md:flex-col md:my-8 md:mx-2 md:mt-36">
             <div className="flex flex-col h-fit w-56 p-3 m-0  items-center text-center mb-32">
@@ -110,12 +108,6 @@ teams navigating rapid technological transition. Fluent in English (C1) and Span
       </div>
 
       <div className="md:hidden flex flex-col px-10 text-center justify-center">
-        <p>You are always welcome to contact me by email at</p>
-        <p className="my-5 text-center text-xl">mariabf.bcn@gmail.com</p>
-        <p>
-          I'm open for work! How would you leverage my skillset? Let me know ;)
-        </p>
-
         <div className="flex justify-center">
           <button className="btn rounded-full my-8 w-fit">
             <Link to="/">Back to projects list</Link>
