@@ -85,7 +85,7 @@ teams navigating rapid technological transition. Fluent in English (C1) and Span
 
       <div className="flex my-8 mx-2 justify-center md:hidden">
         <div className="flex flex-col h-fit w-56 p-3 m-0 border-dashed border-2 border-primary items-center text-center roundedcard">
-          <div className="border-1 border-red-500 rounded-full w-1/2">
+          <div className="border-1 border-primary rounded-full w-1/2">
             {" "}
             Focus{" "}
           </div>
@@ -96,7 +96,7 @@ teams navigating rapid technological transition. Fluent in English (C1) and Span
         </div>
 
         <div className="minusmargin flex flex-col w-56 p-3 mt-14 border-dashed border-2 border-primary items-center text-center roundedcard">
-          <div className="border-1 border-red-500 rounded-full w-1/2">
+          <div className="border-1 border-primary rounded-full w-1/2">
             {" "}
             Plus{" "}
           </div>

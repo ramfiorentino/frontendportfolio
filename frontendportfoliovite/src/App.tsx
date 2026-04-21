@@ -138,7 +138,7 @@ function App() {
             >
               {/* Collapsed header row */}
               <div
-                className="flex items-stretch cursor-pointer min-h-[80px] md:min-h-[88px] h-[186px]"
+                className="flex items-stretch cursor-pointer min-h-[80px] md:min-h-[88px]"
                 onClick={() => handleCardToggle(project._id)}
               >
                 {/* GIF thumbnail column */}
