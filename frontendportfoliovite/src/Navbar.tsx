@@ -5,34 +5,34 @@ import { useTheme } from "./ThemeContext";
 function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
+  const [contactOpen, setCONTACTOpen] = useState(false);
 
   return (
     <>
       <div className="navbar justify-between md:h-24">
         <div className="navbar-start">
           <Link className="link link-hover" to="/" onClick={() => setMenuOpen(false)}>
-            <h3>RAM FIORENTINO</h3>
+            <h5>ram fiorentino</h5>
           </Link>
         </div>
 
-        {/* Desktop nav — inline links + Contact sidebar */}
+        {/* Desktop nav — inline links + CONTACT sidebar */}
         <div className="navbar-end hidden lg:flex items-center gap-2">
           <ul className="menu menu-horizontal px-1">
-            <li><Link to="/bio">BIO</Link></li>
-            <li><button onClick={() => setContactOpen(o => !o)}>Contact</button></li>
+            <li><Link to="/bio">about me</Link></li>
           </ul>
-          <button onClick={toggleTheme} className="btn rounded-full btn-sm">
+          <button onClick={() => setCONTACTOpen(o => !o)} className="link link-hover font-normal text-base px-4">contact</button>
+          <button onClick={toggleTheme} className="btn rounded-full">
             {theme === 'simply-red' ? 'spicy-tech' : 'simply-red'}
           </button>
         </div>
 
-        {/* Desktop Contact full-height sidebar */}
+        {/* Desktop CONTACT full-height sidebar */}
         {contactOpen && (
           <>
-            <div className="fixed inset-0 z-[14] bg-transparent" onClick={() => setContactOpen(false)} />
+            <div className="fixed inset-0 z-[14] bg-transparent" onClick={() => setCONTACTOpen(false)} />
             <div className="fixed top-0 right-0 h-screen z-[15] w-80 bg-base-100 shadow-2xl flex flex-col items-center justify-center px-10 py-8">
-              <button className="absolute top-8 right-8 btn btn-ghost btn-sm" onClick={() => setContactOpen(false)}>
+              <button className="absolute top-8 right-8 btn btn-ghost btn-sm" onClick={() => setCONTACTOpen(false)}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -48,10 +48,8 @@ function Navbar() {
         )}
 
         {/* Mobile hamburger */}
-        <button className="btn btn-ghost lg:hidden" onClick={() => setMenuOpen(o => !o)}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-          </svg>
+        <button className="btn rounded-full lg:hidden" onClick={() => setMenuOpen(o => !o)}>
+          MENU
         </button>
       </div>
 

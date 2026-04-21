@@ -160,11 +160,11 @@ function App() {
                     <h3 className="text-lg md:text-2xl leading-tight">
                       {project.title}
                     </h3>
-                    <span className="text-xs">
+                    <span className="text-s">
                       {project.dateAndLocation}
                     </span>
                     {project.industry && (
-                      <span className="text-xs">{project.industry}</span>
+                      <span className="text-s">{project.industry}</span>
                     )}
                     <div className="flex flex-wrap gap-1 mt-1">
                       {project.techStack?.slice(0, 4).map((tech) => (
@@ -212,7 +212,7 @@ function App() {
                 <div className="border-t border-primary">
                   <div className="flex flex-col md:flex-row">
                     {/* Left: GIF hero */}
-                    <div className="md:w-1/2">
+                    <div className="hidden md:w-1/2">
                       {project.gifUrl ? (
                         <img
                           src={project.gifUrl}

@@ -124,7 +124,7 @@ function ProjectPage() {
     ) : (
       <ul className="flex flex-col gap-1.5 mt-1">
         {section.bullets?.map((b, i) => (
-          <li key={i} className="flex gap-2 text-[11px] text-base-content leading-relaxed">
+          <li key={i} className="flex gap-2 text-m text-base-content leading-relaxed">
             <span className="text-primary shrink-0">→</span>
             {b}
           </li>
@@ -139,7 +139,7 @@ function ProjectPage() {
           <div className={`font-medium text-primary leading-none ${valSize}`}>{m.value}</div>
           <div className="text-[9px mt-0.5 leading-tight">{m.label}</div>
           {m.isProjected && (
-            <div className="text-[8px] text-primary italic">{m.source}</div>
+            <div className="text-[10px] text-primary italic">{m.source}</div>
           )}
         </div>
       ))}
@@ -288,7 +288,7 @@ function ProjectPage() {
               </button>
               <div
                 className="overflow-hidden transition-all duration-400 ease-in-out"
-                style={{ maxHeight: isOpen ? "400px" : "0px" }}
+                //style={{ maxHeight: isOpen ? "400px" : "0px" }}
               >
                 <div className="px-3.5 pb-3">
                   <SectionContent section={section} />
@@ -299,11 +299,11 @@ function ProjectPage() {
         })}
 
         {/* Retrospective — always visible */}
-        <div className="px-3.5 py-3 border-b border-primary">
+        <div className="px-3.5 py-3 border-primary">
           <p className="text-[9px] text-primary tracking-[0.07em] uppercase mb-2">
             What I'd do differently
           </p>
-          <blockquote className="border-l-2 border-primary pl-2.5 text-xs italic text-base-content leading-relaxed">
+          <blockquote className="custom-blockquote border-l-2 border-primary pl-2.5 text-xs italic text-base-content leading-relaxed">
             {project.retrospective || `${project.title}'s retrospective is on its way here!`}
           </blockquote>
         </div>
@@ -377,11 +377,11 @@ function ProjectPage() {
             ))}
 
             {/* Retrospective */}
-            <div className="px-5 py-4 border-b border-primary">
+            <div className="px-5 py-4 border-primary">
               <p className="text-[9px] text-primary tracking-[0.09em] uppercase mb-2">
                 What I'd do differently
               </p>
-              <blockquote className="border-l-2 border-primary pl-3 py-1.5 text-xs italic text-base-content leading-relaxed">
+              <blockquote className="custom-blockquote border-l-2 border-primary pl-3 py-1.5 text-xs italic text-base-content leading-relaxed">
                 {project.retrospective || `${project.title}'s retrospective is on its way here!`}
               </blockquote>
             </div>

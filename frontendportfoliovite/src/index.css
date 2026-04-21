@@ -46,7 +46,7 @@ body {
 }
 
 .navbar {
-  @apply border-b-2;
+  @apply border-b;
   @apply border-primary;
   padding: 1rem;
 }
@@ -184,4 +184,8 @@ a, summary {
 
 .menu-custom a {
   font-size: 2rem;
+}
+
+.custom-blockquote {
+  font-size: 16px;
 }
