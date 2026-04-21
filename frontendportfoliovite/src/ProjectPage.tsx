@@ -1,8 +1,9 @@
+import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import { useThemePrimaryColor } from './hooks/useThemePrimaryColor';
 import Footer from './Footer';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchProjectById, fetchAllProjectSlugs } from './sanityQueries';
 import { QRCodeSVG } from 'qrcode.react';
 
@@ -46,6 +47,45 @@ interface Project {
 interface ProjectNav {
   title: string;
   slug: string;
+}
+
+function AccordionRow({
+  section,
+  isOpen,
+  onToggle,
+  SectionContent,
+}: {
+  section: ProjectSection;
+  isOpen: boolean;
+  onToggle: () => void;
+  SectionContent: React.FC<{ section: ProjectSection }>;
+}) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  return (
+    <div className="border-b border-primary">
+      <button
+        className="flex items-center justify-between w-full px-3.5 py-2.5 text-left"
+        onClick={onToggle}
+      >
+        <span className="text-[13px] font-medium text-primary">{section.title}</span>
+        <span
+          className={`w-5 h-5 border border-primary rounded-full flex items-center justify-center text-base text-primary shrink-0 transition-transform ${
+            isOpen ? 'rotate-180' : ''
+          }`}
+        >
+          {isOpen ? '−' : '+'}
+        </span>
+      </button>
+      <div
+        className="overflow-hidden transition-all duration-300 ease-in-out"
+        style={{ maxHeight: isOpen ? `${contentRef.current?.scrollHeight ?? 500}px` : '0px' }}
+      >
+        <div ref={contentRef} className="px-3.5 pb-3">
+          <SectionContent section={section} />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function ProjectPage() {
@@ -272,29 +312,13 @@ function ProjectPage() {
         {effectiveSections.map((section) => {
           const isOpen = openSection === section.title;
           return (
-            <div key={section.title} className="border-b border-primary">
-              <button
-                className="flex items-center justify-between w-full px-3.5 py-2.5 text-left"
-                onClick={() => setOpenSection(isOpen ? null : section.title)}
-              >
-                <span className="text-[13px] font-medium text-primary">{section.title}</span>
-                <span
-                  className={`w-5 h-5 border border-primary rounded-full flex items-center justify-center text-base text-primary shrink-0 transition-transform ${
-                    isOpen ? 'rotate-180' : ''
-                  }`}
-                >
-                  {isOpen ? '−' : '+'}
-                </span>
-              </button>
-              <div
-                className="overflow-hidden transition-all duration-400 ease-in-out"
-                //style={{ maxHeight: isOpen ? "400px" : "0px" }}
-              >
-                <div className="px-3.5 pb-3">
-                  <SectionContent section={section} />
-                </div>
-              </div>
-            </div>
+            <AccordionRow
+              key={section.title}
+              section={section}
+              isOpen={isOpen}
+              onToggle={() => setOpenSection(isOpen ? null : section.title)}
+              SectionContent={SectionContent}
+            />
           );
         })}
 
