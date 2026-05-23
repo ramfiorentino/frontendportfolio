@@ -5,10 +5,10 @@ type Theme = 'simply-red' | 'spicy-tech';
 const ThemeContext = createContext<{
   theme: Theme;
   toggleTheme: () => void;
-}>({ theme: 'simply-red', toggleTheme: () => {} });
+}>({ theme: 'spicy-tech', toggleTheme: () => {} });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('simply-red');
+  const [theme, setTheme] = useState<Theme>('spicy-tech');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);

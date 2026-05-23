@@ -23,7 +23,7 @@ function Navbar() {
           </ul>
           <button onClick={() => setCONTACTOpen(o => !o)} className="link link-hover font-normal text-base px-4">contact</button>
           <button onClick={toggleTheme} className="btn rounded-full">
-            {theme === 'simply-red' ? 'spicy-tech' : 'simply-red'}
+            {theme === 'spicy-tech' ? 'simply-red' : 'spicy-tech'}
           </button>
         </div>
 
@@ -72,7 +72,7 @@ function Navbar() {
             </nav>
             <div className="mt-auto">
               <button onClick={toggleTheme} className="btn rounded-full">
-                {theme === 'simply-red' ? 'spicy-tech' : 'simply-red'}
+                {theme === 'spicy-tech' ? 'simply-red' : 'spicy-tech'}
               </button>
             </div>
           </div>

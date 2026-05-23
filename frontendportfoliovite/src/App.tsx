@@ -292,7 +292,7 @@ function App() {
 
         {/* SPECIAL SECTIONS */}
         <div
-          id="section-howIWork"
+          id="section-webDesignProjects"
           className="collapse bg-base-200 md:px-2 md:p-4 w-full py"
         >
           <input type="checkbox" />
@@ -302,16 +302,15 @@ function App() {
           >
             <div className="flex justify-start">
               <h3 className="self-center text-xl font-semibold h-30 w-28 md:w-48">
-                HOW I WORK!
+                ALL WEB DESIGN PROJECTS
               </h3>
               <div className="text-xs self-center uppercase hidden md:flex ml-4 md:ml-0">
-                I explain and showcase my project work in progress: photos,
-                project management archive, fun facts and more! HEHE
+                A growing list of web design &amp; development projects.
               </div>
             </div>
             <div className="flex items-center md:hidden md:justify-end">
               <div className="w-24 text-xs uppercase">
-                I explain and showcase...
+                A growing list of projects...
               </div>
             </div>
           </div>
@@ -319,22 +318,23 @@ function App() {
           <div className="collapse-content">
             <div className="md:flex md:justify-between md:hidden">
               <p className="md:w-2/3 my-4">
-                I explain and showcase my project work in progress: photos,
-                project management archive, fun facts and more!
+                A growing list of web design &amp; development projects.
               </p>
             </div>
 
-            <div className="flex flex-col md:flex-row md:justify-between">
-              <button className="btn rounded-full w-fit my-2">
-                <a
-                  href="https://garrulous-track-baf.notion.site/Ram-Fiorentino-How-I-Work-e47a6c39d73344ab989b8bea7adb3fe0?pvs=4"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link link-hover"
-                >
-                  Take me there!
-                </a>
-              </button>
+            <div className="flex flex-col gap-2 mt-2">
+              <a href="https://claudiavitali.com/" target="_blank" rel="noopener noreferrer" className="link link-hover text-sm">
+                Claudia Vitali Hydrogen Store
+              </a>
+              <a href="https://malikna.net/" target="_blank" rel="noopener noreferrer" className="link link-hover text-sm">
+                Malik Hydrogen Store
+              </a>
+              <a href="https://animated-ads-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer" className="link link-hover text-sm">
+                Animated Ads Portfolio
+              </a>
+              <a href="https://ramfiorentino.github.io/pages-for-creatives/" target="_blank" rel="noopener noreferrer" className="link link-hover text-sm">
+                Pages for Creatives
+              </a>
             </div>
           </div>
         </div>
