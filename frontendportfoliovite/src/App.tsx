@@ -420,17 +420,31 @@ function App() {
               </p>
             </div>
 
-            <div className="flex flex-col md:flex-row md:justify-between">
-              <button className="btn rounded-full w-fit my-2">
-                <a
-                  href="https://www.youtube.com/@ohspicytech"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link link-hover"
-                >
-                  Take me there!
-                </a>
-              </button>
+            <div className="flex flex-wrap gap-2 mt-2">
+              <a
+                href="https://podcasts.apple.com/au/podcast/oh-spicy-tech/id1896916981"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-sm rounded-full"
+              >
+                Listen on Apple Podcasts
+              </a>
+              <a
+                href="https://creators.spotify.com/pod/profile/ohspicytech/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-sm rounded-full"
+              >
+                Listen on Spotify
+              </a>
+              <a
+                href="https://www.youtube.com/@ohspicytech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-sm rounded-full"
+              >
+                Listen on YouTube
+              </a>
             </div>
           </div>
         </div>
