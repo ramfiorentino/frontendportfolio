@@ -332,7 +332,7 @@ function App() {
               <a href="https://animated-ads-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer" className="link link-hover text-sm">
                 Animated Ads Portfolio
               </a>
-              <a href="https://ramfiorentino.github.io/pages-for-creatives/" target="_blank" rel="noopener noreferrer" className="link link-hover text-sm">
+              <a href="https://offers.ramfiorentino.com/" target="_blank" rel="noopener noreferrer" className="link link-hover text-sm">
                 Pages for Creatives
               </a>
             </div>
